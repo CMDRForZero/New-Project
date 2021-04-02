@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+    <head>
+
+        <title>Я вертсальщик</title>
+
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    </head>
+
+    <body>
+       <form action="#" method="POST" enctype="multipart/form-data">
+           <div>
+               <p>Имя</p>
+               <input name="username" type="text">
+           </div> 
+           <div>
+            <p>Пароль</p>
+            <input name="userpass" type="password">
+        </div> 
+        <div>
+            <p>Телефон</p>
+            <input name="usertel" type="tel">
+        </div>
+        <div>
+            <p>Пол</p>
+            <input name="usermale" type="radio"> Мужской
+            <br>
+            <input name="usermale" type="radio"> Женский
+        </div> 
+        <div>
+            <p>Имущество</p>
+            <input checked name="uservelo" type="checkbox" value="yes"> Велосипед
+            <br>
+            <input name="usercar" type="checkbox" value="yes"> Машина
+            <br>
+            <input disabled name="userkvar" type="checkbox" value="yes"> Квартира
+        </div> 
+        <div>
+            <p>Дополнительная информация</p>
+            <textarea name="userdopinfo"></textarea>
+        </div> 
+        <div>
+            <p>Фото</p>
+            <input name="userphoto" type="file">
+        </div> 
+        <div>
+            <p>Цвет</p>
+            <select name="color">
+                <option value="red">Красный</option>
+                <option value="yellow">Желтый</option>
+                <option value="green">Зеленый</option>
+                <option value="Yep">ДАДА</option>
+            </select>
+        </div> 
+        <div>
+            <p>Действия</p>
+            <button type="submit">Отправить</button>
+            <button type="reset">Очистить</button>
+        </div>  
+       </form>
+    </body>
+</html>
