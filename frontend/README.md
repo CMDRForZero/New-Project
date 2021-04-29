@@ -74,4 +74,4 @@ Docker команды:
 1. Мы собираем образ
    `docker build -t fronted .`
 2. Мы стартуем проект
-    `docker run –p 80:80  fronted`  
+    `docker run -p 80:80 -d frontend`  
