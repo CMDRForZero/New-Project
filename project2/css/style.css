@@ -36,6 +36,7 @@ h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
 
 body{
     background-color: #e8e8e8;
+    text-align: center;
 }
 
 .content{
@@ -57,8 +58,15 @@ body{
     color: #273d46;
 }
 .content-image{
-    width: 541px;
-    height: 821px;
+    width: 841px;   
+    height: 541px; 
+    
+}
+.content-image__img{
+    width: 841px;   
+    height: 541px; 
+    box-sizing: border-box; 
+    border: 10px solid #000;
 }
 
 
