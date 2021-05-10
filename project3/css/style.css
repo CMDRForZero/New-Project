@@ -1,3 +1,4 @@
+/*Обнуление*/
 *{
     padding: 0;
     margin: 0;
@@ -22,6 +23,7 @@ html, body{
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    list-style-type: none;
 }
 input,button,textarea{font-family: inherit;}
 
@@ -34,3 +36,70 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
 
+
+body{
+    background-color: #e8e8e8;
+    text-align: left;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #273d46;
+    margin: 50px 100px;
+    height: 1000px;
+    width:500px;    
+}
+
+body h1{
+    color: black;
+}
+
+.upper{
+    margin-bottom: 25px;
+}
+
+.upper li:first-child{
+    text-decoration: line-through;
+}
+
+.upper li:nth-child(2){
+    font-weight: 700;
+}
+.upper li:nth-child(3){
+    font-style: italic;
+}
+.upper li:last-child{
+    text-transform: uppercase;
+}
+
+.center{
+    margin-bottom: 25px;
+}
+
+.center li:nth-child(2):hover{
+    color:red;
+}
+
+.textbutton{
+    margin-bottom: 25px;
+    background-color: #80b7b3;
+    text-transform: uppercase;
+    color:white;
+    border-radius: 20px;
+    height: 44px;
+    width: 200px;
+    box-shadow: 0 0 5px 1px #80b7b3;
+}
+.textbutton:hover{
+    background-color: #3a5856; 
+    box-shadow: 0 0 5px 1px #3a5856; 
+}
+.textbutton:active{
+    background-color: #818181; 
+}
+.text{
+    height: 50px;
+    width: 292px;
+    border:1px solid black;
+}
+.text:focus{
+    box-shadow: 0 0 5px 1px #80b7b3;     
+}
