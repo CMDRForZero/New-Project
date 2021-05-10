@@ -1,0 +1,136 @@
+/*Обнуление*/
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*,*:before,*:after{
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    list-style-type: none;
+}
+input,button,textarea{font-family: inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
+/*---------------------------------*/
+
+body{
+    background-color: #e8e8e8;
+    text-align: left;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #273d46;
+    margin: 50px 100px;
+    height: 1100px;
+    width:  500px;    
+}
+
+body h1{
+    color: black;
+}
+
+.upper{
+    margin: 15px 0 25px 0;
+    position: relative;
+}
+.upper li::before{
+    content: '';
+    background-image: url(../img/checkicon.png);
+    width: 25px;
+    height: 19px;
+    display: inline-block;
+    margin: 10px 15px 0 0;
+}
+.upper li:first-child{
+    text-decoration: line-through;
+}
+
+.upper li:nth-child(2){
+    font-weight: 700;
+}
+.upper li:nth-child(3){
+    font-style: italic;
+}
+.upper li:last-child{
+    text-transform: uppercase;
+}
+
+
+
+.center{
+    margin: 15px 0 25px 0;
+    position: relative;
+}
+.center li:before{
+    content:'';
+    background-image: url(../img/checkicon.png);
+    width: 25px;
+    height: 19px;
+    display: inline-block;
+    margin: 10px 15px 0 0;
+}
+.center li:nth-child(2):hover{
+    color:red;
+}
+.center li:nth-child(2):hover::before{
+    background-image: url(../img/checkicon2.png)
+}
+
+
+.textbutton{
+    margin-bottom: 25px;
+    background-color: #80b7b3;
+    text-transform: uppercase;
+    color:white;
+    border-radius: 20px;
+    height: 44px;
+    width: 200px;
+    box-shadow: 0 0 5px 1px #80b7b3;
+}
+.textbutton:hover{
+    background-color: #3a5856; 
+    box-shadow: 0 0 5px 1px #3a5856; 
+}
+.textbutton:active{
+    background-color: #818181; 
+}
+
+.text1{
+    font-size: 14px;
+    margin: 15px 0 25px 0;
+}
+.text1::first-line{
+    color:red;
+}
+
+.text2{
+    font-size: 14px;
+    margin: 15px 0 25px 0;
+}
+.text2::first-letter{
+    font-size: 24px;
+    color: red;
+}
