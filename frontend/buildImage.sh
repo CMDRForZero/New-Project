@@ -8,6 +8,7 @@ echo [Main App STARTING] building $imageFullName..
 
 echo [Main App] creating distr
 npm install
+npm run build
 
 echo [Main App] creating docker image...
 docker build -t $imageFullName .
