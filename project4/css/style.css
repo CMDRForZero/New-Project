@@ -54,7 +54,6 @@ body h1{
 
 .upper{
     margin: 15px 0 25px 0;
-    position: relative;
 }
 .upper li::before{
     content: '';
@@ -81,8 +80,7 @@ body h1{
 
 
 .center{
-    margin: 15px 0 25px 0;
-    position: relative;
+    margin: 15px 0 25px 0; 
 }
 .center li:before{
     content:'';
