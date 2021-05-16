@@ -8,5 +8,5 @@ if [ -z "$1" ]
     imageTag=latest
 fi
 
-(exec "${BASH_SOURCE%/*}/back/backend/buildImage.sh" $imageTag)
-(exec "${BASH_SOURCE%/*}/front/frontend/buildImage.sh" $imageTag)
+(exec "${BASH_SOURCE%/*}/backend/buildImage.sh" $imageTag)
+(exec "${BASH_SOURCE%/*}/frontend/buildImage.sh" $imageTag)

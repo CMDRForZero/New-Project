@@ -10,6 +10,8 @@ build:
   stage: build
   script:
     - chmod +x ./buildImage.sh && chmod +x ./pushImage.sh
+    - chmod +x ./backend/buildImage.sh && chmod +x ./backend/pushImage.sh
+    - chmod +x ./frontend/buildImage.sh && chmod +x ./frontend/pushImage.sh
     - ./buildImage.sh
     - ./pushImage.sh
   only:
