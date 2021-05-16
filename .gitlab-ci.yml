@@ -1,0 +1,21 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - ./buildImage.sh
+    - ./pushImage.sh
+  only:
+    - master
+
+
+deploy_on_stend:
+  stage: deploy
+  before_script:
+    - ./down-dev.sh
+  script:
+    - ./up-dev.sh
+  only:
+    - master
