@@ -9,6 +9,7 @@ stages:
 build:
   stage: build
   script:
+    - chmod +x ./buildImage.sh && chmod +x ./pushImage.sh
     - ./buildImage.sh
     - ./pushImage.sh
   only:
@@ -18,6 +19,7 @@ build:
 deploy_on_stend:
   stage: deploy
   before_script:
+    - chmod +x ./down-dev.sh && chmod +x ./up-dev.sh
     - ./down-dev.sh
   script:
     - ./up-dev.sh
