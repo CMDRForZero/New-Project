@@ -13,6 +13,7 @@ build:
     - chmod +x ./backend/buildImage.sh && chmod +x ./backend/pushImage.sh
     - chmod +x ./frontend/buildImage.sh && chmod +x ./frontend/pushImage.sh
     - ./buildImage.sh
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - ./pushImage.sh
   only:
     - master
@@ -21,6 +22,7 @@ build:
 deploy_on_stend:
   stage: deploy
   before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - chmod +x ./down-dev.sh && chmod +x ./up-dev.sh
     - ./down-dev.sh
   script:

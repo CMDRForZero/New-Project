@@ -8,8 +8,6 @@ if [ -z "$1" ]
     imageTag=latest
 fi
 
-cd backend
-./buildImage.sh $imageTag
-cd ../frontend
-./buildImage.sh $imageTag
-cd ..
+export imageTag=$imageTag
+
+docker-compose -f docker/docker-compose.yml -p dev up -d
