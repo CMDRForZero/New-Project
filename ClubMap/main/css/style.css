@@ -1,0 +1,291 @@
+@charset "UTF-8";
+/*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  list-style-type: none;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/*---------------------------------*/
+@font-face {
+  font-family: 'Neometric-Medium';
+  src: url("../fonts/Neometric-Medium.eot");
+  src: local("☺"), url("../fonts/Neometric-Medium.woff") format("woff"), url("fonts/Neometric-Medium.ttf") format("truetype"), url("fonts/Neometric-Medium.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url("../fonts/LatoRegular.eot");
+  src: local("☺"), url("../fonts/LatoRegular.woff") format("woff"), url("../fonts/LatoRegular.ttf") format("truetype"), url("../fonts/LatoRegular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+.header {
+  position: fixed;
+}
+
+.header__logo img {
+  height: 45px;
+  width: 45px;
+}
+
+.header__text {
+  font-family: 'Neometric-Medium';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.header__menu {
+  display: inline-block;
+}
+
+.menu__list li {
+  padding: 20px;
+  display: inline-block;
+}
+
+.menu__link {
+  font-family: 'Lato';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+}
+
+.menu__link::after {
+  display: block;
+  content: "";
+  margin-top: 1px;
+  height: 3px;
+  width: 0%;
+  background-color: black;
+  transition: width 0.4s ease-in-out;
+}
+
+.menu__link:hover:after,
+.menu__link:focus:after {
+  width: 100%;
+}
+
+.header__user {
+  text-align: left;
+  margin-top: 20px;
+  display: inline-block;
+  width: 92px;
+  height: 33px;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+}
+
+.header__user a {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.user__icon img {
+  margin: 4px;
+  width: 26.8px;
+  height: 24.76px;
+}
+
+.hamburger-menu {
+  /* скрываем чекбокс */
+  /* стилизуем кнопку */
+  /* добавляем "гамбургер" */
+  /* контейнер меню */
+  /* элементы меню */
+}
+
+.hamburger-menu #menu__toggle {
+  opacity: 0;
+}
+
+.hamburger-menu .menu__btn {
+  display: flex;
+  /* используем flex для центрирования содержимого */
+  align-items: center;
+  /* центрируем содержимое кнопки */
+  position: fixed;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.hamburger-menu .menu__btn > span,
+.hamburger-menu .menu__btn > span::before,
+.hamburger-menu .menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+.hamburger-menu .menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+
+.hamburger-menu .menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+
+.hamburger-menu .menu__box {
+  display: block;
+  position: fixed;
+  visibility: hidden;
+  width: 282px;
+  height: 242px;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: white;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.hamburger-menu .menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: black;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hamburger-menu .menu__item:hover {
+  background-color: #CFD8DC;
+}
+
+.hamburger-menu #menu__toggle:checked ~ .menu__btn > span {
+  transform: rotate(45deg);
+}
+
+.hamburger-menu #menu__toggle:checked ~ .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+
+.hamburger-menu #menu__toggle:checked ~ .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.hamburger-menu #menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  left: 0;
+}
+
+.hamburger-menu .menu__btn > span,
+.hamburger-menu .menu__btn > span::before,
+.hamburger-menu .menu__btn > span::after {
+  transition-duration: .25s;
+}
+
+.hamburger-menu .menu__box {
+  transition-duration: .25s;
+}
+
+.hamburger-menu .menu__box > span,
+.hamburger-menu .menu__box > span::before,
+.hamburger-menu .menu__box > span::after {
+  display: block;
+  position: absolute;
+  width: 60%;
+  height: 0.5px;
+  background-color: black;
+}
+
+.hamburger-menu .menu__item {
+  transition-duration: .25s;
+}
+
+.hamburger-menu .menu__box img {
+  margin-bottom: 10px;
+  border-radius: 69px;
+  width: 40px;
+  height: 40px;
+}
+
+.hamburger-menu .menu__box a:nth-child(2) {
+  font-size: 14px;
+}

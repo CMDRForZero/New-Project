@@ -1,4 +1,23 @@
 Ñגמיסעגא רנטפעא
+========================================================================
+Êאעאכמד רנטפעמג:
+https://nomail.com.ua/
+Google Fonts:
+https://fonts.google.com/
+Êמםגונעונ רנטפעמג:
+http://www.font2web.com/
+========================================================================
+@font-face {
+	font-family: 'Èלÿ רנטפעא';
+	font-display: swap;
+	src: url("../fonts/פאיכ רנטפעא.eot");
+	src: local("O"), url("../fonts/פאיכ רנטפעא.woff") format("woff"), 
+			url("../fonts/פאיכ רנטפעא.ttf") format("truetype"), 
+			url("../fonts/פאיכ רנטפעא.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+========================================================================
 
 font-family: "Èלÿ רנטפעא", "Èלÿ רנטפעא", עטן רנטפעא
 Óסעאםאגכטגאוע סולויסעגמ רנטפעא
