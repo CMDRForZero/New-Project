@@ -3,75 +3,187 @@
 @import "_fonts";
 
 body{
-	background-color: white;
+	background-color:#f5f5;
+	font-size: 14px;
 	color:black;
-	text-align: center;
-}
-.header{
-	position: fixed;
-}
-.header__logo img{
-	height: 45px;
-	width: 45px;
-}
-.header__text{
-	font-family: 'Neometric-Medium';
-	font-weight: 700;
-	font-size: 18px;
-	line-height: 22px;
-}
-.header__menu{
-	display: inline-block;
-}
-.menu__list li{
-	padding: 20px;
-	display: inline-block;
-}
-.menu__link{
-	font-family: 'Lato';
-	font-weight: 500;
-	font-size: 18px;
-	line-height: 22px;
-	text-decoration:none; 
-	display: inline-block;
-	color:black;
-}
-.menu__link::after{
-	display: block; 
-	content: "";
-	margin-top: 1px;
-	height: 3px; 
-	width: 0%; 
-	background-color: black; 
-	transition: width 0.4s ease-in-out;
-}
-.menu__link:hover:after,
-.menu__link:focus:after {
-	width: 100%;
-}
-.header__user{
-	text-align: left;
-	margin-top: 20px;
-	display: inline-block;
-	width: 92px;
-	height: 33px;
-	border: 0.5px solid #000000;
-	border-radius: 10px;
-}
-.header__user a{
-	display: inline-block;
-	font-weight: 700;
-	font-size: 20px;
+	max-width: 1516px;
 	
 }
-.user__icon img{
-	margin: 4px;
-	width: 26.8px;
-	height: 24.76px;
+.wrapper {
 }
-.hamburger-menu{
-	@import "_burger-menu";
+
+.header {
+	&__container {
+		background-color: #e5e5e5e5;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1180px;
+		margin-left: 170px;	
+	}
+	&__logo img{
+		width: 45px;
+		height: 45px;
+		border-radius: 9px;
+		margin-right: 5px;
+	}
+	&__text{
+		font-family: 'Neometric';
+		font-size:22px;
+		font-weight: 700;
+		color: #000;
+		margin-right: 270px;
+	}
+	&__menu{
+		background-color: red;
+	}
+	&__actions {}
 }
+
+.menu{
+	&__body {
+		flex: 1 1 auto;
+	}
+	&__list {
+		display: flex;
+		justify-content: center;
+		margin-right: 270px;
+		li{
+			margin: 0px 10px;
+		}
+		a:after {
+			display: block; /*превращаем его в блочный элемент*/
+			content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+			height: 2px; /*задаём высоту линии*/
+			width: 0%; /*задаём начальную ширину элемента (линии)*/
+			background-color: black; /*цвет фона элемента*/
+			transition: width 0.4s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
+			}
+			a:hover:after,
+			a:focus:after {
+			width: 100%;
+			}
+			a:hover{
+			color:black;
+			} 
+	}
+	&__link {
+		font-family: 'Lato';
+		font-size: 18px;
+		font-weight: 500;
+		color: #000;
+	}
+}
+.actions-header {
+	&__user {
+		width: 92px;
+		height: 33px;
+		background: #FFFFFF;
+		border: 0.5px solid #000000;
+		border-radius: 10px;
+	}
+}
+.user-header {
+	cursor: pointer;
+	&__icon {
+		img{
+			margin: 3.5px;
+			width: 26.8px;
+			height: 24.76px;
+		}
+	}
+	&__menu {
+		display: none;
+	border-radius: 10px;
+	right: 200px;
+	top: 50px;
+	position: absolute;
+	background-color: white;
+	cursor: pointer;
+	li{
+		margin: 25px;
+	}
+	li:nth-child(1){
+		a{
+			margin-left: 20px;
+		}
+		margin: 25px;
+		font-family: 'Nunito';
+		font-weight: 700;
+	}
+	}
+	&__logo {
+		vertical-align: middle;
+		border-radius: 69px;
+	}
+	&__link {
+		margin: 25px;
+		font-family: 'Nunito';
+		color: #000;
+	}
+}
+
+.slogan{
+	background-color:yellowgreen;
+	width: 1029px;
+	margin: 61px 240px;
+	text-align: center;
+	&__top {
+		font-family: 'Arvo';
+		font-weight: 700;
+		font-size: 48px;
+		color: #767664;
+		margin-bottom: 60px;
+	}
+	&__center {
+		font-family: 'Lato';
+		font-size: 24px;
+		font-weight: 500;
+		color: #767664;
+		margin-bottom: 60px;
+	}
+	&__list {
+		min-width: 578px;
+		min-height: 86px;
+		background-color: #589BCC;
+		border-radius: 18px;
+	}
+	&__list:hover{
+		transition: 1s;
+		background-color: #589BCC; 
+		filter: drop-shadow(0px 0px 13px #589BCC);
+	}
+	&__list:not(:hover) {
+		transition: 1s;
+	}
+	&__link {
+		color:white;
+		font-family: 'Lato';
+		font-size: 36px;
+		font-weight: 600;
+		filter: drop-shadow(0px 0px 13px rgba(0, 0, 0, 0.3));
+	
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

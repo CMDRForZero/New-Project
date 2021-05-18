@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'Neometric-Medium';
+	font-family: 'Neometric';
 	src: url('../fonts/Neometric-Medium.eot');
 	src: local('☺'), url('../fonts/Neometric-Medium.woff') format('woff'), url('fonts/Neometric-Medium.ttf') format('truetype'), url('fonts/Neometric-Medium.svg') format('svg');
 	font-weight: normal;
@@ -12,4 +12,13 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'Arvo';
+	src: url('../fonts/Arvo700.eot');
+	src: local('☺'), url('../fonts/Arvo700.woff') format('woff'), url('../fonts/Arvo700.ttf') format('truetype'), url('../fonts/Arvo700.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
