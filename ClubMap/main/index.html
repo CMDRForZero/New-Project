@@ -10,6 +10,7 @@
 		<!-- Отключает принудительную ссылку у номера телефона на iOS -->
 		<meta name="format-detection" content="telephone=no">
 		<link rel="stylesheet" href="css/style.css">
+	
 		<title>ClubMap</title>
 	</head>
 	<body>
@@ -103,6 +104,83 @@
 					</div>
 				</div>
 			</section>
+			<section class="how">
+				<div class="how__text">
+					<a>Как этим</a>
+					<a>пользоваться?</a>
+				</div>
+				<div class="how__text-slogan">
+					Используй функционал на полную. Создавай. Присоединяйся к уже созданным мероприятиям, приглашай друзей.
+				</div>
+				<div class="how__activities activities">
+					<div class="activities__reg">
+						<a>Регистрируйся</a>
+						<a>Зарегистрируйся с помощью номера мобильного телефона прямо сейчас и начни пользоваться платформой без проблем</a>
+					</div>
+					<div class="activities__connect">
+						<div class="activities__connect-box">
+							<a>Присоединяйся к Clubmap</a>
+							<input class="activities__phone" type="text" id="inputPhone" value="+7(___)___-__-__">
+							<script>
+								let inputPhone=document.getElementById("inputPhone");
+								inputPhone.oninput=()=>phoneMask(inputPhone)
+								function phoneMask(inputEl) {
+									let patStringArr = "+7(___)___-__-__".split('');
+									let arrPush = [3, 4, 5, 7, 8, 9, 11, 12, 14, 15]
+									let val = inputEl.value;
+									let arr = val.replace(/\D+/g, "").split('').splice(1);
+									let n;
+									let ni;
+									arr.forEach((s, i) => {
+										n = arrPush[i];
+										patStringArr[n] = s
+										ni = i
+									});
+									arr.length < 10 ? inputEl.style.color = 'red' : inputEl.style.color = 'green';
+									inputEl.value = patStringArr.join('');
+									n ? inputEl.setSelectionRange(n + 1, n + 1) : inputEl.setSelectionRange(17, 17)
+								}
+							</script>
+							<a href="" class="activities__link">
+								<button href="" class="activities__list">Продолжить</button>
+							</a>
+							</div>
+							<div class="activites__join">
+								<a>или с помощью</a>
+								<div class="activites__join-link">
+									<a href=""></a>
+									<a href=""></a>
+									<a href=""></a>
+								</div>
+							</div>
+						</div>						
+						<div class="activities__search search">
+							<div class="search__text">
+								<a>Ищи мероприятия</a>
+								<a>Найди то, что тебе по вкусу, сделай свою жизнь динамичнее и проще!</a>
+							</div>
+								<div class="search__button">
+									<a href="" class="search__link">
+										<button href="" class="search__list">Карта мероприятий</button>
+									</a>
+							</div>
+						</div>
+						<div class="activities__search create">
+							<div class="create__text">
+								<a>Создавай и приглашай друзей</a>
+								<a>Создай свое мероприятие, проведи время в хорошей компании. Объединяй единомыленников.</a>
+							</div>
+								<div class="create__button">
+									<a href="" class="create__link">
+										<button href="" class="create__list">Создать мероприятие</button>
+									</a>
+							</div>
+							<h2>Отслеживай все созданные и избранные мероприятия в своем профиле</h2>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	</body>
 </html>
