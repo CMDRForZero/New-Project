@@ -13,14 +13,6 @@
 	font-style: normal;
 }
 
-@font-face {
-	font-family: 'Arvo-BoldItalic';
-	src: url('../fonts/Arvo-BoldItalic.eot');
-	src: local('☺'), url('../fonts/Arvo-BoldItalic.woff') format('woff'), url('../fonts/Arvo-BoldItalic.ttf') format('truetype'), url('../fonts/Arvo-BoldItalic.svg') format('svg');
-	font-weight: 700;
-	font-style: italic;
-}
-
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');

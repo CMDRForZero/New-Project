@@ -180,6 +180,54 @@
 					</div>
 				</div>
 			</section>
+			<section class="questions">
+				<div class="questions__text">
+					Вопросы
+				</div>
+				<div class="questions__question">
+					<button class="accordion">Создавать мероприятия можно какие угодно?</button>
+					<div class="panel">
+						<p>Создавать мероприятия можно какие угодно?</p>
+					</div>
+					<span></span>
+					<button class="accordion">Можно ли запланировать мероприятие на определенный день?</button>
+					<div class="panel">
+						<p>Да, при создании мероприятий есть выбор либо создать сейчас, либо выбрать непосредственно дату.</p>
+					</div>
+					<span></span>
+					<button class="accordion">Обязательно ли регистрироваться по номеру телефона?</button>
+					<div class="panel">
+						<p>Да, при создании мероприятий есть выбор либо создать сейчас, либо выбрать непосредственно дату.</p>
+					</div>
+					<span></span>
+					<button class="accordion">Чем ваш сервис отличается от других?</button>
+					<div class="panel">
+						<p>Чем ваш сервис отличается от других?</p>
+					</div>
+					<span></span>
+					<button class="accordion">Section 1</button>
+					<div class="panel">
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint dolores eveniet doloremque? Minus sequi consequatur autem voluptatibus, ab quisquam soluta iure voluptate quis neque quasi sit libero blanditiis velit assumenda?</p>
+					</div>
+					<span></span>
+					<script>
+						var acc = document.getElementsByClassName("accordion");
+						var i;
+						
+						for (i = 0; i < acc.length; i++) {
+							acc[i].addEventListener("click", function() {
+								this.classList.toggle("active");
+								var panel = this.nextElementSibling;
+								if (panel.style.maxHeight) {
+									panel.style.maxHeight = null;
+								} else {
+									panel.style.maxHeight = panel.scrollHeight + "px";
+								} 
+							});
+						}
+					</script>
+				</div>
+			</section>
 		</div>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	</body>
