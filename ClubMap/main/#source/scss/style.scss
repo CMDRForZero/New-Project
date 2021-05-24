@@ -20,6 +20,7 @@ body{
 		z-index: 100;  
 		width: 1029px;  
 		display: flex;
+		padding-top: 5px;
 		align-items: center;	
 		justify-content: space-between;
 		background-color: white;  
@@ -158,8 +159,6 @@ body{
 		background-color: #589BCC;
 		border-radius: 18px;
 		margin-bottom: 60px;
-	}
-	&__link {
 	}
 	&__link:hover{
 		transition: 0.5s;
@@ -356,8 +355,6 @@ body{
 		font-size: 24px;
 		line-height: 159%;
 		padding-bottom: 70px;
-	}
-	&__activities {
 	}
 }
 .activities {

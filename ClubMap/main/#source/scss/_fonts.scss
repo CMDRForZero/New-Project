@@ -6,6 +6,15 @@
 	font-style: normal;
 }
 @font-face {
+	font-family: 'Neometric-Bold';
+	src: local('../fonts/Neometric Bold'), local('../fonts/Neometric-Bold'),
+		url('../fonts/Neometric-Bold.woff2') format('woff2'),
+		url('../fonts/Neometric-Bold.woff') format('woff'),
+		url('../font/sNeometric-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
 	font-family: 'Lato';
 	src: url('../fonts/LatoRegular.eot');
 	src: local('☺'), url('../fonts/LatoRegular.woff') format('woff'), url('../fonts/LatoRegular.ttf') format('truetype'), url('../fonts/LatoRegular.svg') format('svg');
