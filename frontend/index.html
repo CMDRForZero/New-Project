@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta 
+		<meta name="viewport" content="width=device-width">
+		<!--Не забыть отключить-->
+		<meta name="robots" content="none">
+
+		<!-- Отключает принудительную ссылку у номера телефона на iOS -->
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="css/style.css">
+	
+		<title>ClubMap</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+					<a href="" class="header__logo"><img src="img/logo.jpg" alt=""></a>
+					<a class="header__text">club map</a>
+						<div class="header__menu">
+						<nav class="menu__body">
+							<ul class="menu__list">
+								<li><a href="" class="menu__link">Для кого</a></li>
+								<li><a href="" class="menu__link">Как пользоваться</a></li>
+								<li><a href="" class="menu__link">Вопросы</a></li>
+							</ul>
+						</nav>
+						</div>
+						<div class="header__actions actions-header">
+							<div class="actions-header__user user-header">
+								<div class="user-header__icon">
+									<img src="img/icon_user.jpg" alt="">
+								</div>
+								<ul class="user-header__menu">
+									<li><img class="user-header__logo" src="img/Joel_MAxwelljpg.jpg"><a>Joel Maxwell</a></li>
+									<li><a class="user-header__link" href="#">Мои мероприятия</a></li>
+									<li><a class="user-header__link" href="#">Создать мероприятие</a></li>
+									<li><a class="user-header__link" href="#">Настройки</a></li>
+									<li><a class="user-header__link" href="#">Выход из профиля</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="header__slogan slogan">
+						<div class="slogan__top">
+							Платформа для удобного поиска <br> событий рядом с вами и вашем городе
+						</div>
+						<div class="slogan__center">
+							Будь в курсе всех вечеринок. Организуй. Наслаждайся каждым моментом.
+						</div>
+						<a href="/frontend/map.html" class="slogan__link">
+							<button href="" class="slogan__list">Карта мероприятий</button>
+						</a>
+					</div>
+				</div>
+			</header>
+			<section class="for-who">
+				<div class="for-who__text">
+					<a>Для кого</a>
+					<a>а главное</a>
+					<a>Зачем</a>
+				</div>
+				<div class="for-who__content content">
+					<div class="content__arrow1">
+						<div class="content__text1">
+							Club Map  является платформой для поиска, а так же создания мероприятий на любой вкус.
+						</div>
+					</div>
+					<div class="content__arrow2">
+						<div class="content__text2">
+							Цель платформы - сократить время на поиск различных мероприятий (прогулка в парке, сходить в бар, выпить кофе перед работой и т.п.)
+						</div>
+					</div>
+					<div class="content__arrow3">
+						<div class="content__text3">
+							Обратная связь - основополагающий фактор, чтобы добиться максимального комфорта для тех кто использует  Club Map
+						</div>
+					</div>
+				</div>
+					<div class="for-who__content useful">
+						<div class="useful__text">
+							Для кого это может быть интересно?
+						</div>
+						<div class="useful__drop">
+							<div class="useful__natural natural">
+								<div class="natural__img">
+									<img src="img/gray.jpg" alt="">
+								</div>
+								<div class="natural__text">
+									Если ты постоянно в поисках чего-то нового
+								</div>
+							</div>
+							<div class="useful__legal-entity legal-entity">
+								<div class="legal-entity__img">
+									<img src="img/gray.jpg" alt="">
+								</div>
+								<div class="legal-entity__text">
+									Если ты являешься организатором крупных мероприятий
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="how">
+				<div class="how__text">
+					<a>Как этим</a>
+					<a>пользоваться?</a>
+				</div>
+				<div class="how__text-slogan">
+					Используй функционал на полную. Создавай. Присоединяйся к уже созданным мероприятиям, приглашай друзей.
+				</div>
+				<div class="how__activities activities">
+					<div class="activities__reg">
+						<a>Регистрируйся</a>
+						<a>Зарегистрируйся с помощью номера мобильного телефона прямо сейчас и начни пользоваться платформой без проблем</a>
+					</div>
+					<div class="activities__connect">
+						<div class="activities__connect-box">
+							<a>Присоединяйся к Clubmap</a>
+							<input class="activities__phone" type="text" id="inputPhone" value="+7(___)___-__-__">
+							<script>
+								let inputPhone=document.getElementById("inputPhone");
+								inputPhone.oninput=()=>phoneMask(inputPhone)
+								function phoneMask(inputEl) {
+									let patStringArr = "+7(___)___-__-__".split('');
+									let arrPush = [3, 4, 5, 7, 8, 9, 11, 12, 14, 15]
+									let val = inputEl.value;
+									let arr = val.replace(/\D+/g, "").split('').splice(1);
+									let n;
+									let ni;
+									arr.forEach((s, i) => {
+										n = arrPush[i];
+										patStringArr[n] = s
+										ni = i
+									});
+									arr.length < 10 ? inputEl.style.color = 'red' : inputEl.style.color = 'green';
+									inputEl.value = patStringArr.join('');
+									n ? inputEl.setSelectionRange(n + 1, n + 1) : inputEl.setSelectionRange(17, 17)
+								}
+							</script>
+							<a href="" class="activities__link">
+								<button href="" class="activities__list">Продолжить</button>
+							</a>
+							</div>
+							<div class="activites__join">
+								<a>или с помощью</a>
+								<div class="activites__join-link">
+									<a href=""></a>
+									<a href=""></a>
+									<a href=""></a>
+								</div>
+							</div>
+						</div>						
+						<div class="activities__search search">
+							<div class="search__text">
+								<a>Ищи мероприятия</a>
+								<a>Найди то, что тебе по вкусу, сделай свою жизнь динамичнее и проще!</a>
+							</div>
+								<div class="search__button">
+									<a href="frontend/map.html" class="search__link">
+										<button href="" class="search__list">Карта мероприятий</button>
+									</a>
+							</div>
+						</div>
+						<div class="activities__search create">
+							<div class="create__text">
+								<a>Создавай и приглашай друзей</a>
+								<a>Создай свое мероприятие, проведи время в хорошей компании. Объединяй единомыленников.</a>
+							</div>
+								<div class="create__button">
+									<a href="" class="create__link">
+										<button href="" class="create__list">Создать мероприятие</button>
+									</a>
+							</div>
+							<h2>Отслеживай все созданные и избранные мероприятия в своем профиле</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="questions">
+				<div class="questions__text">
+					Вопросы
+				</div>
+				<div class="questions__question">
+					<button class="accordion">Создавать мероприятия можно какие угодно?</button>
+					<div class="panel">
+						<p>Создавать мероприятия можно какие угодно?</p>
+					</div>
+					<span></span>
+					<button class="accordion">Можно ли запланировать мероприятие на определенный день?</button>
+					<div class="panel">
+						<p>Да, при создании мероприятий есть выбор либо создать сейчас, либо выбрать непосредственно дату.</p>
+					</div>
+					<span></span>
+					<button class="accordion">Обязательно ли регистрироваться по номеру телефона?</button>
+					<div class="panel">
+						<p>Да, при создании мероприятий есть выбор либо создать сейчас, либо выбрать непосредственно дату.</p>
+					</div>
+					<span></span>
+					<button class="accordion">Чем ваш сервис отличается от других?</button>
+					<div class="panel">
+						<p>Чем ваш сервис отличается от других?</p>
+					</div>
+					<span></span>
+					<button class="accordion">Section 1</button>
+					<div class="panel">
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint dolores eveniet doloremque? Minus sequi consequatur autem voluptatibus, ab quisquam soluta iure voluptate quis neque quasi sit libero blanditiis velit assumenda?</p>
+					</div>
+					<span></span>
+					<script>
+						var acc = document.getElementsByClassName("accordion");
+						var i;
+						
+						for (i = 0; i < acc.length; i++) {
+							acc[i].addEventListener("click", function() {
+								this.classList.toggle("active");
+								var panel = this.nextElementSibling;
+								if (panel.style.maxHeight) {
+									panel.style.maxHeight = null;
+								} else {
+									panel.style.maxHeight = panel.scrollHeight + "px";
+								} 
+							});
+						}
+					</script>
+				</div>
+			</section>
+		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	</body>
+</html>
