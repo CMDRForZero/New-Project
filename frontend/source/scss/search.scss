@@ -237,8 +237,13 @@ body{
 		}
 	}
 }
+//Настройки карты
 .map__yandex{
-	height: 754px;
+	height: 775px;
 	width: 939px;
-	background: url('/frontend/img/Map.jpg');
+}
+.place1{
+	width: 22px;
+	height: 22px;
+	vertical-align: middle;
 }
