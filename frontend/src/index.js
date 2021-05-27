@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 import './css/search.css';
 import Header from './components/header';
-//import Maps from './components/map';
+import Maps from './components/maps';
 
 
 const Wrapper = () => {
 	return (
-		<Header />
+		<Fragment>
+			<Header />
+			<Maps />
+		</Fragment>
 	);
 }
 
