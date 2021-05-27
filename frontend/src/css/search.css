@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @font-face {
   font-family: 'Neometric-Bold';
-  src: local("../fonts/Neometric Bold"), local("../fonts/Neometric-Bold"), url("../fonts/Neometric-Bold.woff2") format("woff2"), url("../fonts/Neometric-Bold.woff") format("woff"), url("../font/sNeometric-Bold.ttf") format("truetype");
+  src: local("../fonts/Neometric Bold"), local("../fonts/Neometric-Bold"), url("../fonts/Neometric-Bold.woff2") format("woff2"), url("../fonts/Neometric-Bold.woff") format("woff"), url("../font/Neometric-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -286,11 +286,13 @@ body {
   margin: auto;
   margin-top: 61px;
   width: 1516px;
+  height: 100vh;
 }
 
 .events {
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: azure;
 }
 
 .events__content {
@@ -357,7 +359,7 @@ body {
 }
 
 .map__yandex {
-  height: 775px;
+  height: 100vh;
   width: 939px;
 }
 

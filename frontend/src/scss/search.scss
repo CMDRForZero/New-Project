@@ -171,12 +171,13 @@ body{
 	margin: auto;
 	margin-top: 61px;
 	width: 1516px;
+	height: 100vh;
 }
 .events {
 	overflow-y:	auto;
 	overflow-x:	hidden;
-
-	&__content {		
+	background-color:azure;
+	&__content {
 		height: 754px;
 		width: 578px;
 	}
@@ -239,7 +240,7 @@ body{
 }
 //Настройки карты
 .map__yandex{
-	height: 775px;
+	height: 100vh;
 	width: 939px;
 }
 .place1{
