@@ -12,4 +12,4 @@ const Wrapper = () => {
 	);
 }
 
-ReactDOM.render(<Wrapper/>, document.getElementById('Wrapper'));
+ReactDOM.render(<Wrapper/>, document.getElementById('wrapper'));

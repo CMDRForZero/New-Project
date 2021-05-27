@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './search.css';
-import FormMB from 'form__menubody';
-import Menulist from 'menu__list';
+import '../css/search.css';
+import FormMB from './form__menubody';
+import Menulist from './menu__list';
 
 const Menubody = () => {
 	return (

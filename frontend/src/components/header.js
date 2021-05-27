@@ -1,6 +1,6 @@
 import React from 'react';
-import './css/search.css';
-import Headercontainer from 'header__container';
+import '../css/search.css';
+import Headercontainer from './header__container';
 
 const Header = () => {
 	return (
