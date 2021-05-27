@@ -1,7 +1,7 @@
 import React from 'react';
-import './search.css';
-import Headermenu from 'header__menu';
-import Headeractions from 'header__actions';
+import '../css/search.css';
+import Headermenu from './header__menu';
+import Headeractions from './header__actions';
 
 const Headercontainer = () => {
 	return (

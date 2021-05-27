@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './search.css';
-import Menubody from 'menu__body';
+import '../css/search.css';
+import Menubody from './menu__body';
 
 const Headermenu = () => {
 	return (
