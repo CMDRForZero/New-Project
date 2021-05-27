@@ -1,10 +1,12 @@
+import { YMaps } from 'react-yandex-maps';
+
 console.log('startscript');
-ymaps.ready(init);
+YMaps.ready(init);
 
 function init() {
 	console.log('startscript');
 	var myPlacemark, newMark,
-		myMap = new ymaps.Map('map', {
+		myMap = new YMaps.Map('map', {
 			center: [55.753994, 37.622093],
 			zoom: 9
 		}, {
@@ -27,7 +29,7 @@ function init() {
 
 	// Создание метки
 	function createPlacemark(coords, name, ballon) {
-		return new ymaps.Placemark(coords, {
+		return new YMaps.Placemark(coords, {
 			//  balloonContentHeader:'<div class="place"><img src="place1.png" class="place1"></div>', name,
 			balloonContentHeader: ['<div class="place"><img src="./img/place1.png" class="place1" alt="метка">' + name + '</div>'].join(''),
 			iconCaption: name,
