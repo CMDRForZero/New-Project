@@ -1,8 +1,8 @@
 import React from 'react';
-import '../css/search.css';
+import '../../css/style.css';
 import Headeruser from './actions-header__user';
 
-const Headeractions = () => {
+const HeaderBurger = () => {
 	return (
 	<div className="header__actions actions-header">
 		<Headeruser />
@@ -10,5 +10,5 @@ const Headeractions = () => {
 	);
 }
 
-export default Headeractions;
+export default HeaderBurger;
 

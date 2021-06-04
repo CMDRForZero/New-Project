@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/search.css';
+import '../../css/style.css';
 
 const Usericon = () => {
 	return (

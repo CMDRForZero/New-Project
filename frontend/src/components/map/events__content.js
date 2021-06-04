@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../css/search.css';
+import '../../css/search.css';
 import Eventscontentbox from './events__content-box';
 
 const Eventscontent = () => {

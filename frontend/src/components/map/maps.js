@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../css/search.css';
+import '../../css/search.css';
 import Mapevents from './map__events';
 import Mapyandex from './map__yandex';
 
