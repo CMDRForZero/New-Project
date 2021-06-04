@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/search.css';
+import '../css/search.scss';
 import Headermenu from './header__menu';
 import Headeractions from './header__actions';
 

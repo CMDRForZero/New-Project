@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
-import './css/search.css';
+import './css/search.scss';
 import Header from './components/header';
 import Maps from './components/maps';
-
 
 const Wrapper = () => {
 	return (

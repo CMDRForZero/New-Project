@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/search.css';
+import '../css/search.scss';
 import Usericon from './user-header__icon';
 import Usermenu from './user-header__menu';
 
