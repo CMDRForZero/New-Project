@@ -6,7 +6,6 @@ import Header from './components/header/header';
 import Main from './components/main/main';
 import Map from './components/map/map';
 
-
 const Wrapper = () => {
 	return (
 		<Router>
