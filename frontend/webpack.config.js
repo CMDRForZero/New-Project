@@ -171,6 +171,10 @@ module.exports = (env, argv) => {
           patterns: [{from: 'public/js', to: 'js'}]
         }
       ),
+      new CopyPlugin({
+          patterns: [{from: 'public/css', to: 'css'}]
+        }
+      ),
       new HtmlWebpackPlugin({
         template: './public/index.html'
       }),
