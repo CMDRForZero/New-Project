@@ -1,6 +1,7 @@
 import { YMaps } from 'react-yandex-maps';
 
 console.log('startscript');
+<<<<<<< HEAD
 YMaps.ready(init);
 
 function init() {
@@ -48,3 +49,8 @@ function init() {
 
 
 }
+=======
+
+
+
+>>>>>>> 1097aaec3c8fd3cae4b9c3ce4fa886e964327c91
