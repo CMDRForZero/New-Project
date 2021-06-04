@@ -1,5 +1,9 @@
 import React, { Fragment } from 'react';
+<<<<<<< HEAD:frontend/src/components/header/user-header__link.js
 import '../../css/style.css';
+=======
+import '../css/search.scss';
+>>>>>>> 288c86dfa993774fc1da0199a9ac99710d659fb9:frontend/src/components/user-header__link.js
 
 const Userlink = () => {
 	return (
