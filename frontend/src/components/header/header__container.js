@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import '../../css/style.css';
+import '../../css/style.scss';
 
 import HeaderLogo from './header__logo';
 import HeaderMenu from './header__menu';

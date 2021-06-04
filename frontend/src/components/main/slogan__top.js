@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import '../../css/search.css';
+
+import Score from './score'
 
 const SloganTop = () => {
 	return (
@@ -14,6 +15,7 @@ const SloganTop = () => {
 				<a href="/map" className="slogan__link">
 					<button href="" className="slogan__list">Карта мероприятий</button>
 				</a>
+				<Score/>
 		</Fragment>
 	);
 }

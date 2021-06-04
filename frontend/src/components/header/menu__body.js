@@ -1,25 +1,34 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, useLocation } from 'react-router-dom';
 
-import '../../css/style.css';
-import FormMB from './form__menubody';
+import '../../css/style.scss';
+
 import Menulist from './menu__list';
 
+
 const Menubody = () => {
+	const path = useLocation().pathname
+	const [display, setDisplay] = React.useState(false);
+	useEffect( () => {
+		if ("/map" === path) setDisplay(true)
+			else setDisplay(false)
+	}, [path]);
+
 	return (
-		<Router>
+		<div>
 			<nav className="menu__body">
-				<Route path="/map" render={() => 
-					<form action="" method="get">
-					<input name="menu_search" placeholder="Поиск мероприятия..." type="search"></input>
-					<button type="submit"></button>
-					</form>
-				} exact/>
+				{display && 
+					<nav className="menu__body">
+							<form action="" method="get">
+							<input name="menu_search" placeholder="Поиск мероприятия..." type="search"></input>
+							<button type="submit"></button>
+							</form>
+					</nav>
+				}
 				<Menulist />
 			</nav>
-		</Router>
-	);
+		</div>
+	)
 }
-
 
 export default Menubody;

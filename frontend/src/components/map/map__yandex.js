@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import '../../css/search.css';
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 
 const Mapyandex = () => {

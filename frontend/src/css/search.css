@@ -1,0 +1,370 @@
+@charset "UTF-8";
+/*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  list-style-type: none;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/*---------------------------------*/
+@font-face {
+  font-family: 'Neometric';
+  src: url("../fonts/Neometric-Medium.eot");
+  src: local("☺"), url("../fonts/Neometric-Medium.woff") format("woff"), url("../fonts/Neometric-Medium.ttf") format("truetype"), url("../fonts/Neometric-Medium.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neometric-Bold';
+  src: local("../fonts/Neometric Bold"), local("../fonts/Neometric-Bold"), url("../fonts/Neometric-Bold.woff2") format("woff2"), url("../fonts/Neometric-Bold.woff") format("woff"), url("../fonts/Neometric-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url("../fonts/LatoRegular.eot");
+  src: local("☺"), url("../fonts/LatoRegular.woff") format("woff"), url("../fonts/LatoRegular.ttf") format("truetype"), url("../fonts/LatoRegular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: white;
+  font-size: 14px;
+  color: black;
+  min-width: 1516px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 1516px;
+  margin: auto;
+}
+
+.header__container {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 1516px;
+  display: flex;
+  padding-top: 5px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.header__logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 9px;
+  margin-right: 5px;
+}
+
+.header__text {
+  font-family: 'Neometric';
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+  margin-left: -120px;
+}
+
+.menu__body {
+  display: flex;
+}
+
+.menu__body form {
+  position: relative;
+  width: 447px;
+  height: 45px;
+  margin: 0 auto;
+}
+
+.menu__body input, .menu__body button {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+}
+
+.menu__body input {
+  width: 100%;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid #CBCBCB;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding-left: 15px;
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19.25 7C19.25 8.39239 18.6969 9.72774 17.7123 10.7123C16.7277 11.6969 15.3924 12.25 14 12.25C12.6076 12.25 11.2723 11.6969 10.2877 10.7123C9.30312 9.72774 8.75 8.39239 8.75 7C8.75 5.60761 9.30312 4.27226 10.2877 3.28769C11.2723 2.30312 12.6076 1.75 14 1.75C15.3924 1.75 16.7277 2.30312 17.7123 3.28769C18.6969 4.27226 19.25 5.60761 19.25 7Z' fill='%238CACCC'/%3e%3cpath d='M13.125 7H14.875V22.75C14.875 22.9821 14.7828 23.2046 14.6187 23.3687C14.4546 23.5328 14.2321 23.625 14 23.625C13.7679 23.625 13.5454 23.5328 13.3813 23.3687C13.2172 23.2046 13.125 22.9821 13.125 22.75V7Z' fill='%238CACCC'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.3557 21.1663C11.4046 21.393 11.3614 21.6298 11.2358 21.8247C11.1101 22.0196 10.9122 22.1567 10.6855 22.2058C9.69675 22.421 8.93025 22.7168 8.435 23.0318C7.9065 23.3678 7.875 23.5935 7.875 23.625C7.875 23.6478 7.88375 23.7738 8.1305 23.9925C8.3755 24.2095 8.7815 24.4475 9.35725 24.661C10.5035 25.0915 12.145 25.375 14 25.375C15.855 25.375 17.4965 25.0915 18.6427 24.661C19.2185 24.4458 19.6228 24.2095 19.8695 23.9925C20.1145 23.7738 20.125 23.6478 20.125 23.625C20.125 23.5935 20.0935 23.3678 19.565 23.0318C19.0698 22.7168 18.3033 22.4193 17.3145 22.2058C17.2 22.1837 17.0911 22.1389 16.9942 22.0741C16.8972 22.0093 16.8142 21.9258 16.75 21.8285C16.6858 21.7312 16.6417 21.622 16.6203 21.5074C16.5988 21.3928 16.6005 21.275 16.6253 21.1611C16.65 21.0471 16.6972 20.9393 16.7642 20.8438C16.8312 20.7484 16.9166 20.6673 17.0154 20.6054C17.1142 20.5434 17.2243 20.5018 17.3394 20.483C17.4545 20.4643 17.5722 20.4687 17.6855 20.496C18.788 20.7358 19.7732 21.091 20.503 21.5565C21.203 21.9993 21.875 22.6853 21.875 23.625C21.875 24.3285 21.4918 24.892 21.0298 25.3015C20.5677 25.7128 19.9482 26.0418 19.257 26.299C17.8692 26.8205 16.0107 27.125 14 27.125C11.9892 27.125 10.1325 26.8205 8.743 26.3008C8.05175 26.0418 7.43225 25.7128 6.97025 25.3015C6.50825 24.892 6.125 24.3285 6.125 23.625C6.125 22.6853 6.797 21.9993 7.49525 21.5565C8.22675 21.091 9.21025 20.734 10.3145 20.496C10.4269 20.4716 10.543 20.4695 10.6562 20.49C10.7693 20.5104 10.8774 20.553 10.9741 20.6153C11.0708 20.6775 11.1543 20.7582 11.2198 20.8528C11.2853 20.9473 11.3315 21.0538 11.3557 21.1663Z' fill='%238CACCC'/%3e%3c/svg%3e ") no-repeat scroll 4px 7px;
+  padding-left: 30px;
+}
+
+.menu__body button {
+  height: 39px;
+  margin-top: 2px;
+  width: 42px;
+  position: absolute;
+  right: 8.5px;
+  cursor: pointer;
+  background: #FFFFFF;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='42' height='43' viewBox='0 0 42 43' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M27.0104 26.1429C27.1439 25.9991 27.3024 25.8851 27.4769 25.8073C27.6514 25.7295 27.8385 25.6895 28.0274 25.6895C28.2163 25.6895 28.4034 25.7295 28.5779 25.8073C28.7524 25.8851 28.9109 25.9991 29.0444 26.1429L34.5788 32.0948C34.8485 32.3847 35.0002 32.7779 35.0003 33.188C35.0004 33.5981 34.8491 33.9915 34.5795 34.2815C34.31 34.5716 33.9443 34.7347 33.563 34.7348C33.1817 34.735 32.8159 34.5722 32.5462 34.2823L27.0118 28.3304C26.8782 28.1868 26.7721 28.0163 26.6998 27.8286C26.6274 27.641 26.5902 27.4398 26.5902 27.2366C26.5902 27.0335 26.6274 26.8323 26.6998 26.6446C26.7721 26.4569 26.8782 26.2864 27.0118 26.1429H27.0104Z' fill='%23929292'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M21.3438 28.5515C22.382 28.5515 23.4101 28.3315 24.3693 27.9042C25.3286 27.4769 26.2002 26.8506 26.9343 26.0611C27.6685 25.2715 28.2508 24.3342 28.6482 23.3026C29.0455 22.271 29.25 21.1653 29.25 20.0487C29.25 18.9321 29.0455 17.8265 28.6482 16.7948C28.2508 15.7632 27.6685 14.8259 26.9343 14.0364C26.2002 13.2468 25.3286 12.6205 24.3693 12.1932C23.4101 11.7659 22.382 11.546 21.3438 11.546C19.2469 11.546 17.2359 12.4418 15.7532 14.0364C14.2705 15.6309 13.4375 17.7936 13.4375 20.0487C13.4375 22.3038 14.2705 24.4665 15.7532 26.0611C17.2359 27.6556 19.2469 28.5515 21.3438 28.5515ZM30.6875 20.0487C30.6875 22.7138 29.7031 25.2697 27.9508 27.1542C26.1985 29.0387 23.8219 30.0974 21.3438 30.0974C18.8656 30.0974 16.489 29.0387 14.7367 27.1542C12.9844 25.2697 12 22.7138 12 20.0487C12 17.3836 12.9844 14.8277 14.7367 12.9432C16.489 11.0587 18.8656 10 21.3438 10C23.8219 10 26.1985 11.0587 27.9508 12.9432C29.7031 14.8277 30.6875 17.3836 30.6875 20.0487Z' fill='%23929292'/%3e%3c/svg%3e ");
+  background-repeat: no-repeat;
+  background-position: auto;
+}
+
+.menu__body button:before {
+  color: #F9F0DA;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu__list li {
+  margin-left: 100px;
+}
+
+.menu__list a:after {
+  display: block;
+  /*превращаем его в блочный элемент*/
+  content: "";
+  /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+  height: 2px;
+  /*задаём высоту линии*/
+  width: 0%;
+  /*задаём начальную ширину элемента (линии)*/
+  background-color: black;
+  /*цвет фона элемента*/
+  transition: width 0.4s ease-in-out;
+  /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
+}
+
+.menu__list a:hover:after,
+.menu__list a:focus:after {
+  width: 100%;
+}
+
+.menu__list a:hover {
+  color: black;
+}
+
+.menu__link {
+  font-family: 'Lato';
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+
+.actions-header__user {
+  width: 92px;
+  height: 33px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+}
+
+.user-header {
+  cursor: pointer;
+}
+
+.user-header__icon img {
+  margin: 3.5px;
+  width: 26.8px;
+  height: 24.76px;
+}
+
+.user-header__menu {
+  border-radius: 10px;
+  right: 0px;
+  top: 50px;
+  position: absolute;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid black;
+  z-index: 50;
+}
+
+.user-header__menu li {
+  margin: 25px;
+}
+
+.user-header__menu li:nth-child(1) {
+  margin: 25px;
+  font-family: 'Nunito';
+  font-weight: 700;
+}
+
+.user-header__menu li:nth-child(1) a {
+  margin-left: 20px;
+}
+
+.user-header__logo {
+  vertical-align: middle;
+  border-radius: 69px;
+}
+
+.user-header__link {
+  margin: 25px;
+  font-family: 'Nunito';
+  color: #000;
+}
+
+.map {
+  display: flex;
+  position: relative;
+  margin: auto;
+  margin-top: 61px;
+  width: 1516px;
+  height: 100vh;
+}
+
+.events {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: azure;
+}
+
+.events__content {
+  height: 754px;
+  width: 578px;
+}
+
+.box {
+  display: flex;
+  margin: 20px;
+  width: 527px;
+  height: 200px;
+  background: #FFFDFD;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.box__left {
+  position: relative;
+  margin: 15px;
+  width: 225px;
+  height: 170px;
+  background: #E0E0E0;
+  border-radius: 12px;
+}
+
+.box__left a {
+  text-align: center;
+  position: absolute;
+  top: 135.6px;
+  left: 22px;
+  width: 179px;
+  height: 34.5px;
+  padding-top: 10px;
+  font-family: 'Neometric-Bold';
+  font-size: 14px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='180' height='35' viewBox='0 0 180 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M6.65673 12C6.65673 5.37258 12.0293 0 18.6567 0H160.968C167.596 0 172.968 5.37258 172.968 12V28.1383C172.968 31.5827 175.761 34.375 179.205 34.375H0.420044C3.86447 34.375 6.65673 31.5827 6.65673 28.1383V12Z' fill='%23F1F1F1' fill-opacity='0.8'/%3e%3c/svg%3e ");
+  background-repeat: no-repeat;
+}
+
+.box__rigth p:first-child {
+  width: 258.82px;
+  height: 28.13px;
+  margin-top: 15px;
+  font-family: 'Neometric-Bold';
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-top: 8px;
+  background: rgba(241, 241, 241, 0.8);
+  border-radius: 12px;
+}
+
+.box__rigth p:last-child {
+  padding: 10px;
+  width: 258.82px;
+  height: 124.63px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: 'Lato';
+  font-size: 13px;
+  background: rgba(241, 241, 241, 0.8);
+  border-radius: 12px;
+}
+
+.map__yandex {
+  height: 100vh;
+  width: 939px;
+}
+
+.place1 {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}

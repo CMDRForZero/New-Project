@@ -2,12 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from './logo';
-import '../../css/style.css';
 
 const HeaderLogo = () => {
 	return (
 		<Link to="/">
-			<div>
+			<div className="logo-container">
 				< Logo/>
 			</div>
 		</Link>
