@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/search.scss';
 
 const Usericon = () => {
 	return (

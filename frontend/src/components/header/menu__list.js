@@ -2,8 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import '../css/search.scss';
-
 const Menulist = () => {
 	return (
 		<ul className="menu__list">

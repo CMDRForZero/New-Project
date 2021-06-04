@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/search.scss';
 import Userlink from './user-header__link';
 
 const Usermenu = () => {

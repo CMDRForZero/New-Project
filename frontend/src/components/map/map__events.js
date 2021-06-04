@@ -1,6 +1,5 @@
 import React from 'react';
 
-import '../css/search.scss';
 import Eventscontent from './events__content';
 
 const Mapevents = () => {

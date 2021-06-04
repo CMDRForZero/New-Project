@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import '../css/search.scss';
 
 const Userlink = () => {
 	return (

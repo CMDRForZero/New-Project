@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/search.scss';
 import Headeruser from './actions-header__user';
 
 const HeaderBurger = () => {

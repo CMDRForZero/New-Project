@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import '../../css/search.css';
+import '../../css/search.scss';
 
 const SloganTop = () => {
 	return (

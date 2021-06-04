@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../css/search.scss';
-
 const FormMB = () => {
 	return (
 			<form action="" method="get">
