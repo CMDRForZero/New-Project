@@ -121,14 +121,14 @@ body {
 	color: black;
 	min-width: 1516px;
 	margin: auto;
-	overflow-x:  hidden;
+	overflow-x: hidden;
 	overflow-y: auto;
 }
 
 .wrapper {
 	width: 100%;
 }
-
+/*Хэдер*/
 .header {
 	position: fixed;
 	top: 0;
@@ -261,7 +261,7 @@ body {
 	font-family: "Nunito";
 	color: #000;
 }
-
+/*Глаывный экран*/
 .slogan {
 	position: relative;
 	width: 100vw;
@@ -337,10 +337,11 @@ body {
 	text-align: center;
 	color: #e1dede;
 }
-.for-who{
+/*Для кого*/
+.for-who {
 	padding-top: 100px;
 }
-.for-who__top{
+.for-who__top {
 	font-family: "Open Sans";
 	font-style: normal;
 	font-weight: bold;
@@ -349,23 +350,23 @@ body {
 	text-align: center;
 	color: #000000;
 }
-.for-who__down{
+.for-who__down {
 	padding-top: 50px;
 	display: flex;
 	width: 1086px;
 	margin: auto;
 	justify-content: space-between;
 }
-.natural{
+.natural {
 	width: 377px;
 	height: 436.26px;
 }
-.natural__img img{
+.natural__img img {
 	width: 370.7px;
 	height: 308.91px;
 	margin-bottom: 30px;
 }
-.natural__text{
+.natural__text {
 	font-family: "Ubuntu";
 	font-style: normal;
 	font-weight: bold;
@@ -374,15 +375,15 @@ body {
 	text-align: center;
 	color: #000000;
 }
-.legal-entity{
+.legal-entity {
 	width: 570px;
 	height: 436px;
 }
-.legal-entity__img img{
+.legal-entity__img img {
 	width: 570px;
 	height: 339.2px;
 }
-.legal-entity__text{
+.legal-entity__text {
 	font-family: "Ubuntu";
 	font-style: normal;
 	font-weight: bold;
@@ -390,4 +391,101 @@ body {
 	line-height: 28px;
 	text-align: center;
 	color: #000000;
+}
+/*Вопросы*/
+.questions {
+	margin: auto;
+	width: 100vw;
+	padding-top: 61px;
+	padding-right: 61px;
+	font-family: "Lato";
+	color: #ffffff;
+	background-color: #71aff8;
+	padding: 70px 250px 30px 250px;
+}
+.questions__text {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 64px;
+	padding: 70px 0px 30px 100px;
+}
+.questions__question {
+	width: auto;
+	padding-left: 100px;
+}
+.question {
+	transition: max-height 0.2s ease-out;
+}
+.question h4 {
+	color: #ffffff;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	text-align: left;
+	font-size: 15px;
+	transition: 0.4s;
+	font-family: "Lato";
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	background-color: #71aff8;
+	line-height: 29px;
+}
+.question p {
+	font-family: "Lato";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 24px;
+	letter-spacing: 0.07em;
+	color: #ffffff;
+	padding-bottom: 40px;
+	padding: 0 20px;
+	overflow: hidden;
+
+	width: 700px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.question header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.btn {
+	background: transparent;
+	border-color: transparent;
+	width: 44px;
+	height: 44px;
+	background: rgba(255, 255, 255, 0.53);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	color: #ffffff;
+	cursor: pointer;
+	align-self: center;
+}
+
+.question-title {
+	cursor: pointer;
+}
+.example-enter {
+	opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease-in;
+}
+
+.example-leave {
+	opacity: 1;
+}
+
+.example-leave.example-leave-active {
+	opacity: 0.01;
+	transition: opacity 300ms ease-in;
 }
