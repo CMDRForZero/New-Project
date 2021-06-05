@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Score from './score'
 
+
 const SloganTop = () => {
 	return (
 		<Fragment>
