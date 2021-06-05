@@ -135,7 +135,8 @@ body {
 	z-index: 100;
 	width: 100vw;
 	display: flex;
-	padding-top: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	align-items: center;
 	justify-content: space-between;
 	margin: auto;
@@ -209,6 +210,7 @@ body {
 }
 
 .actions-header__user {
+	display: none;
 	width: 92px;
 	height: 33px;
 	background: #ffffff;
@@ -392,6 +394,92 @@ body {
 	text-align: center;
 	color: #000000;
 }
+/*How*/
+.how-to-use{
+	height: 621px;
+	margin-bottom: 250px;
+}
+.how__slogan{
+	margin-left: -400px;
+	font-family: "Open Sans", sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 64px;
+	line-height: 79px;
+	text-align: center;
+	color: rgba(113, 175, 248, 0.7);
+}
+.how__slogan a{
+	display: block;
+}
+.how__slogan a:first-child{
+	margin-left: -325px;
+}
+.how__links{
+	display: flex;
+}
+.how__reg{
+	position: relative;
+	margin: auto;
+	width: 400px;
+	height: 393px;
+	text-align: left;
+	display: block;
+	justify-content: center;
+}
+.how__reg h2:first-child{
+	font-family: "Open Sans", sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 100px;
+line-height: 123px;
+color: #71AFF8;
+}
+.how__reg h2:nth-child(2){
+font-family: "Open Sans", sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 44px;
+color: #71AFF8;
+}
+.how__reg h2:nth-child(3){
+	font-family: "Open Sans", sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 159%;
+color: #717171;
+}
+.how__list {
+	color: #71AFF8;
+	font-family: "Open Sans", sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	filter: drop-shadow(0px 0px 13px rgba(0, 0, 0, 0.3));
+	min-width: 364px;
+	min-height: 73px;
+	border: 2px solid #71AFF8;
+	background-color: white;
+	border-radius: 18px;
+	margin-bottom: 100px;
+}
+.how__list:hover{
+	color: white;
+	background: #71AFF8;
+	transition: 0.5s;
+}
+.how__list:not(:hover) {
+	transition: 0.5s;
+}
+.btn-cont {
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+}
 /*Вопросы*/
 .questions {
 	margin: auto;
@@ -409,7 +497,7 @@ body {
 	font-style: italic;
 	color: rgba(255, 255, 255, 0.7);
 	font-size: 64px;
-	padding: 70px 0px 30px 100px;
+	padding: 70px 0px 60px 100px;
 }
 .questions__question {
 	width: auto;
@@ -432,6 +520,7 @@ body {
 	font-size: 24px;
 	background-color: #71aff8;
 	line-height: 29px;
+	margin-top: 40px;
 }
 .question p {
 	font-family: "Lato";
@@ -441,12 +530,10 @@ body {
 	line-height: 24px;
 	letter-spacing: 0.07em;
 	color: #ffffff;
-	padding-bottom: 40px;
+	padding-bottom: 20px;
 	padding: 0 20px;
 	overflow: hidden;
-
 	width: 700px;
-	margin-top: 20px;
 	margin-bottom: 20px;
 }
 .question header {
