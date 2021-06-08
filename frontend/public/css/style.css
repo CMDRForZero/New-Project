@@ -140,7 +140,6 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	margin: auto;
-	background-color: white;
 }
 
 .logo-container {
@@ -269,10 +268,10 @@ body {
 	width: 100vw;
 	height: 100vh;
 	margin: auto;
-	margin-top: 61px;
 	text-align: center;
-	background-image: url("../img/main-background.png");
-	background-size: 100% auto;
+	background: url("../img/main-background.jpg");
+	mix-blend-mode: multiply;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 
@@ -281,7 +280,7 @@ body {
 	font-weight: 700;
 	font-size: 48px;
 	color: white;
-	padding-top: 65px;
+	padding-top: 126px;
 	margin-bottom: 60px;
 }
 
