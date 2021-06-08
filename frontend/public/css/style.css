@@ -576,3 +576,15 @@ color: #717171;
 	opacity: 0.01;
 	transition: opacity 300ms ease-in;
 }
+#modalForm{
+	display: none;
+	border: 1px solid blue;
+	background-color: white;
+	padding: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+#modalForm input{
+	border: 1px solid lightgrey;
+}
