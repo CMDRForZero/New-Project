@@ -1,15 +1,37 @@
-'use strict';
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
-const express = require('express');
-// константы
-const port = 8080;
-const host = '0.0.0.0';
-
-//приложение
 const app = express();
-app.get('/', (req, res) => {
-    res.send('Hello World');
+
+let corsOptions = {
+    origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./app/models");
+db.sequelize.sync();
+
+// На случай изменения таблиц и ресинхронизации бд
+/*
+db.sequelize.sync({ force: true }).then(() => {
+  console.log("Drop and re-sync db.");
+});
+ */
+
+app.get("/", (req, res) => {
+    res.json({ message: "First opening" });
 });
 
-app.listen(port, host);
-console.log(`running on http://${host}:${port}`);
+require("./app/routes/event.routes")(app);
+
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+});
