@@ -2,10 +2,34 @@ import React, { useState } from 'react';
 
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import Form from "./form";
+import Modal from "./modal";
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
+	const [isModelShown, setIsModelShown] = useState(false);
+	const onSubmit = () => {
+		console.log('onSubmit true')
+	}
 	const test = 'test'
+	 const showModal = () => {
+	setIsModelShown(true)
 
+	};
+	const closeModal = () => {
+		setIsModelShown(false)
+	};
+	const onKeyDown = (event) => {
+		if (event.keyCode === 27) {
+			closeModal();
+		}
+	};
+	const onClickOutside = (event) => {
+		if (this.modal && this.modal.contains(event.target)) return;
+	       closeModal();
+	};
+
+	const toggleScrollLock = () => {
+		document.querySelector('html').classList.toggle('scroll-lock');
+	};
 	return (
 		<div className="map__yandex" id="map">
 			<YMaps>
@@ -19,24 +43,36 @@ const Mapyandex = () => {
 					))}
 				</Map>
 			</YMaps>
-		<Form/>
+		{/*<Form/>*/}
 
+			{isModelShown? (
+				<Modal
+					onSubmit={onSubmit}
+					// modalRef={(n) => (this.modal = n)}
+					// buttonRef={(n) => (this.closeButton = n)}
+					closeModal={closeModal}
+					onKeyDown={onKeyDown}
+					onClickOutside={onClickOutside}
+				/>
+			) : null}
 		</div>
 	);
 
 	function click(e) {
-		var coords = e.get('coords');
-		console.log(coords);
-
-		let form = document.getElementById('modalForm')
-		form.style.display = 'block'
-
-		let cordX = document.getElementById('cordX')
-		let cordY = document.getElementById('cordY')
-		cordX.value =   coords[0]
-		cordY.value =   coords[1]
-		let button = document.getElementById('safeButton')
-		button.addEventListener('click', safeForm)
+		setIsModelShown(true)
+		console.log('clickOnMap')
+		// // var coords = e.get('coords');
+		// console.log(coords);
+		//
+		// let form = document.getElementById('modalForm')
+		// form.style.display = 'block'
+		//
+		// let cordX = document.getElementById('cordX')
+		// let cordY = document.getElementById('cordY')
+		// cordX.value =   coords[0]
+		// cordY.value =   coords[1]
+		// let button = document.getElementById('safeButton')
+		// button.addEventListener('click', safeForm)
 	//	console.log(name, ballon)
 	//	setPlacemarks({ 'coords': coords, 'name': name, 'ballon': ballon })
 	}

@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
-
+import Popup from 'reactjs-popup';
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 
 const Form = () => {
     const [placemarks, setPlacemarks] = useState([]);
+    const position = {position: "absolute", top: '40px', left: '40px'}
 
     return (
+        <Popup trigger={<button> Trigger</button>} position="right center" style={position}>
+            <div>Popup content here !!</div>
+        </Popup>
 
-            <div id="modalForm">
-                <label htmlFor="name">Название</label><br/>
-                <input id="name"></input><br/>
-                <label htmlFor="desk">Описание</label><br/>
-                <input id="desk"></input><br/>
-                <label htmlFor="type">Вид</label><br/>
-                <select id="type">
-                    <option value="bike">Спорт</option>
-                    <option value="kokt">Коктель</option>
-                    <option value="shop">Магазин</option>
-                </select><br/>
-                <button id="safeButton">Метка</button>
-                <input type='hidden' id="cordX"></input>
-                <input type='hidden' id="cordY"></input>
-            </div>
+            // <div id="modalForm">
+            //     <label htmlFor="name">Название</label><br/>
+            //     <input id="name"></input><br/>
+            //     <label htmlFor="desk">Описание</label><br/>
+            //     <input id="desk"></input><br/>
+            //     <label htmlFor="type">Вид</label><br/>
+            //     <select id="type">
+            //         <option value="bike">Спорт</option>
+            //         <option value="kokt">Коктель</option>
+            //         <option value="shop">Магазин</option>
+            //     </select><br/>
+            //     <button id="safeButton">Метка</button>
+            //     <input type='hidden' id="cordX"></input>
+            //     <input type='hidden' id="cordY"></input>
+            // </div>
     );
 
     function safeForm(){
