@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import Form from "./form";
-import Modal from "./modal";
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
 	const [modalProps, setModalProps] = useState({});
@@ -10,7 +9,7 @@ const Mapyandex = () => {
 	const onSubmit = () => {
 		console.log('onSubmit true')
 	}
-	const test = 'test'
+
 	 const showModal = () => {
 	setIsModelShown(true)
 
@@ -40,7 +39,14 @@ const Mapyandex = () => {
 					onClick={click}
 				>
 					{placemarks.map((pm, i) => (
-						<Placemark key={i} geometry={pm.geometry} properties={pm.properties} options={pm.options} modules={pm.modules} />
+						<Placemark key={i} geometry={pm.geometry}
+											 properties={{
+											 	balloonContentFooter: `Ваше событие! <br><a href="#" onclick="${editPlacemark()}">Редактировать</a> <a href="#">Удалить</a>`,
+											 	...pm.properties
+											 }}
+											 options={pm.options}
+											 modules={pm.modules}
+						/>
 					))}
 				</Map>
 			</YMaps>
@@ -73,13 +79,14 @@ const Mapyandex = () => {
 		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
 		setPlacemarks([...placemarks, myPlacemark]);
 	}
-	function editPlacemark (e){
-		e.preventDefault()
+	function editPlacemark() {
+		console.log("идет редактирование")
+		console.log(placemarks)
 	}
 	function delitPlacemark (e){
 		e.preventDefault()
 	}
-	function createPlacemark(coords, name, ballon, tapy) {
+	function createPlacemark(coords, name, ballon, tapy, onClick) {
 	//	return new ymaps.Placemark(coords, {
 		return {
 			geometry: coords,
@@ -87,7 +94,6 @@ const Mapyandex = () => {
 			//  balloonContentHeader:'<div class="place"><img src="place1.png" class="place1"></div>', name,
 			balloonContentHeader:['<div class="place"><img src="/img/place1.png" class="place1" alt="метка">' + name + '</div>'].join(''),
 			iconCaption: name,
-			balloonContentFooter: 'Ваше событие! <br><a href="#">Редактировать{test}</a> <a href="#">Удалить</a>',
 			balloonContentBody: ballon
 
 		}, options: {
@@ -103,6 +109,35 @@ const Mapyandex = () => {
 
 	};
 	}
+
+	const balloonContentLayout = ymaps.templateLayoutFactory.createClass(
+		'<div style="margin: 10px;">' +
+		'<b>{{properties.name}}</b><br />' +
+		'<button id="my-button"> Выбрать </button>' +
+		'</div>', {
+
+			build: function() {
+				BalloonContentLayout.superclass.build.call(this);
+				$('#my-button').bind('click', this.myButtonClick);
+			},
+
+			clear: function() {
+				$('#my-button').unbind('click', this.myButtonClick);
+				BalloonContentLayout.superclass.clear.call(this);
+			},
+
+			myButtonClick: function() {
+				var pos = placemark.geometry.getCoordinates();
+				//alert(pos);
+				map.geoObjects.removeAll();
+				map.geoObjects.add(placemark);
+				map.setCenter(pos);
+				map.setZoom(pos, {
+					checkZoomRange: true
+				})
+
+			}
+		});
 }
 
 
