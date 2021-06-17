@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 import { Map, Placemark, YMaps } from "react-yandex-maps";
-
+import Form from "./form";
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
+	const test = 'test'
 
 	return (
 		<div className="map__yandex" id="map">
@@ -18,21 +19,8 @@ const Mapyandex = () => {
 					))}
 				</Map>
 			</YMaps>
-			<div id="modalForm">
-				<label htmlFor="name">Название</label><br/>
-			<input id="name"></input><br/>
-			<label htmlFor="desk">Описание</label><br/>
-			<input id="desk"></input><br/>
-			<label htmlFor="type">Вид</label><br/>
-			<select id="type">
-						<option value="bike">Спорт</option>
-						<option value="kokt">Коктель</option>
-						<option value="shop">Магазин</option>
-					</select><br/>
-			<button id="safeButton">Метка</button>
-			<input type='hidden' id="cordX"></input>
-							<input type='hidden' id="cordY"></input>
-			</div>
+		<Form/>
+
 		</div>
 	);
 
@@ -79,7 +67,7 @@ const Mapyandex = () => {
 			//  balloonContentHeader:'<div class="place"><img src="place1.png" class="place1"></div>', name,
 			balloonContentHeader:['<div class="place"><img src="/img/place1.png" class="place1" alt="метка">' + name + '</div>'].join(''),
 			iconCaption: name,
-			balloonContentFooter: 'Ваше событие! <br><a href="#">Редактировать</a> <a href="#">Удалить</a>',
+			balloonContentFooter: 'Ваше событие! <br><a href="#">Редактировать{test}</a> <a href="#">Удалить</a>',
 			balloonContentBody: ballon
 
 		}, options: {
