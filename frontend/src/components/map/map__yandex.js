@@ -5,6 +5,7 @@ import Form from "./form";
 import Modal from "./modal";
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
+	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
 	const onSubmit = () => {
 		console.log('onSubmit true')
@@ -36,7 +37,7 @@ const Mapyandex = () => {
 				<Map
 					width="100%" height="100%"
 					defaultState={{ center: [55.753994, 37.622093], zoom: 9 }}
-					onClick={(e) => click(e)}
+					onClick={click}
 				>
 					{placemarks.map((pm, i) => (
 						<Placemark key={i} geometry={pm.geometry} properties={pm.properties} options={pm.options} modules={pm.modules} />
@@ -46,48 +47,31 @@ const Mapyandex = () => {
 		{/*<Form/>*/}
 
 			{isModelShown? (
-				<Modal
-					onSubmit={onSubmit}
-					// modalRef={(n) => (this.modal = n)}
-					// buttonRef={(n) => (this.closeButton = n)}
-					closeModal={closeModal}
-					onKeyDown={onKeyDown}
-					onClickOutside={onClickOutside}
-				/>
+				<Form props = {modalProps}/>
 			) : null}
 		</div>
 	);
 
 	function click(e) {
+		var cX = e.get('clientX')
+		var cY = e.get('clientY')
+		var coords = e.get('coords');
+		setModalProps({
+			clickX: cX,
+			clickY: cY,
+			cordX: coords[0],
+			cordY: coords[1],
+			type: "kokt",
+			name: "1231",
+			desk: "123",
+			closeModal: closeModal,
+			createPlacemark: createPlacemarkFromModal
+		})
 		setIsModelShown(true)
-		console.log('clickOnMap')
-		// // var coords = e.get('coords');
-		// console.log(coords);
-		//
-		// let form = document.getElementById('modalForm')
-		// form.style.display = 'block'
-		//
-		// let cordX = document.getElementById('cordX')
-		// let cordY = document.getElementById('cordY')
-		// cordX.value =   coords[0]
-		// cordY.value =   coords[1]
-		// let button = document.getElementById('safeButton')
-		// button.addEventListener('click', safeForm)
-	//	console.log(name, ballon)
-	//	setPlacemarks({ 'coords': coords, 'name': name, 'ballon': ballon })
 	}
-	function safeForm(){
-		let name = document.getElementById('name')
-		let desk = document.getElementById('desk')
-		let type = document.getElementById('type')
-		let cordX = document.getElementById('cordX')
-		let cordY = document.getElementById('cordY')
-		let myPlacemark = createPlacemark([cordX.value, cordY.value], name.value, desk.value, type.value);
+	function createPlacemarkFromModal(cordX, cordY, name, desk, type) {
+		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
 		setPlacemarks([...placemarks, myPlacemark]);
-		let form = document.getElementById('modalForm')
-		form.style.display = 'none'
-	//	name.value = ''
-	//	desk.value = ''
 	}
 	function editPlacemark (e){
 		e.preventDefault()

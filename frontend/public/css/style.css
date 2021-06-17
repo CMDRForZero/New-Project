@@ -576,7 +576,6 @@ color: #717171;
 	transition: opacity 300ms ease-in;
 }
 #modalForm{
-	display: none;
 	border: 1px solid blue;
 	background-color: white;
 	padding: 10px;
