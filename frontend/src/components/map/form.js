@@ -23,6 +23,7 @@ const Form = ({props}) => {
     );
 
   function safeForm() {
+    // тут мы должны передать в createPlacemark что мы редактируем какую то точку
     props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, type.current.value);
     props.closeModal()
   }

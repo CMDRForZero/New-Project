@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 
-import { Map, Placemark, YMaps } from "react-yandex-maps";
+import { Map, YMaps } from "react-yandex-maps";
 import Form from "./form";
+import BContentFooter from "./bcontentFooter";
+import ActivePlacemark from "./active-placemark";
+
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
+	const [ymaps, setYmaps] = useState(null);
 	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
 	const onSubmit = () => {
@@ -36,21 +40,26 @@ const Mapyandex = () => {
 				<Map
 					width="100%" height="100%"
 					defaultState={{ center: [55.753994, 37.622093], zoom: 9 }}
+					onLoad={ymaps => setYmaps(ymaps)}
 					onClick={click}
+					modules={[
+						'templateLayoutFactory',
+						'geoObject.addon.balloon',
+						'clusterer.addon.balloon',
+					]}
 				>
-					{placemarks.map((pm, i) => (
-						<Placemark key={i} geometry={pm.geometry}
-											 properties={{
-											 	balloonContentFooter: `Ваше событие! <br><a href="#" onclick="${editPlacemark()}">Редактировать</a> <a href="#">Удалить</a>`,
-											 	...pm.properties
-											 }}
-											 options={pm.options}
-											 modules={pm.modules}
+					{placemarks.map((pm, i) => {
+
+						return <ActivePlacemark key={i} geometry={pm.geometry}
+																		ymaps={ymaps}
+																		balloonContent={<BContentFooter i={i} editPlacemark={editPlacemark}/>}
+																		properties={pm.properties}
+																		options={pm.options}
 						/>
-					))}
+					})}
 				</Map>
 			</YMaps>
-		{/*<Form/>*/}
+			{/*<Form/>*/}
 
 			{isModelShown? (
 				<Form props = {modalProps}/>
@@ -79,14 +88,27 @@ const Mapyandex = () => {
 		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
 		setPlacemarks([...placemarks, myPlacemark]);
 	}
-	function editPlacemark() {
+	function editPlacemark(e, i) {
 		console.log("идет редактирование")
+		console.log(e)
+		console.log(i)
 		console.log(placemarks)
+
+		// тут показываем модальной окно
+		// мы должны передать в модальное окно, что мы редактируем существующий элемент
 	}
 	function delitPlacemark (e){
+		// тут должен приходит index который мы хоти удалить
+		// удаление работае следующий образом
+		// setPlacemarks(placemarks.splice(index, 1))
 		e.preventDefault()
 	}
 	function createPlacemark(coords, name, ballon, tapy, onClick) {
+		// здесь приходит некоторый индекс, если мы редактируем существущую точку, то мы должны ее перезаписать
+		// setPlacemarks(placemarks=>({
+		//    ...placemarks,
+		//    [index]: измененный элемент
+		// }))
 	//	return new ymaps.Placemark(coords, {
 		return {
 			geometry: coords,
@@ -105,39 +127,10 @@ const Mapyandex = () => {
 			// draggable: false
 		},
 			modules:
-				['geoObject.addon.balloon', 'geoObject.addon.hint']
+				['geoObject.addon.balloon', 'geoObject.addon.hint', 'templateLayoutFactory',]
 
 	};
 	}
-
-	const balloonContentLayout = ymaps.templateLayoutFactory.createClass(
-		'<div style="margin: 10px;">' +
-		'<b>{{properties.name}}</b><br />' +
-		'<button id="my-button"> Выбрать </button>' +
-		'</div>', {
-
-			build: function() {
-				BalloonContentLayout.superclass.build.call(this);
-				$('#my-button').bind('click', this.myButtonClick);
-			},
-
-			clear: function() {
-				$('#my-button').unbind('click', this.myButtonClick);
-				BalloonContentLayout.superclass.clear.call(this);
-			},
-
-			myButtonClick: function() {
-				var pos = placemark.geometry.getCoordinates();
-				//alert(pos);
-				map.geoObjects.removeAll();
-				map.geoObjects.add(placemark);
-				map.setCenter(pos);
-				map.setZoom(pos, {
-					checkZoomRange: true
-				})
-
-			}
-		});
 }
 
 
