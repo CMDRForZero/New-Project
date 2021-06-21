@@ -1,136 +1,71 @@
-const db = require("../models");
-const Event = db.event;
-const Op = db.Sequelize.Op;
+const db = require('../config/db.config');
+const Events = db.event;
 
-//create
+//post event
 exports.create = (req, res) => {
-    //validate
-    if (!req.body.title) {
-        res.status(400).send({
-            message: "empty content"
-        });
-        return;
-    }
-
-    //create
-    const event = {
-        title: req.body.title,
-        description: req.body.description,
-        date: req.body.date
-    };
-
-    //save in DB
-    Event.create(event)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Error while creating the event"
-            });
-        });
-
-};
-
-//retrieve all events/ find by title
-exports.findAll = (req, res) => {
-    const title = req.query.title;
-    let condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
-
-    Event.findAll({where: condition})
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Error while retrieving events"
-            });
-        });
-
-};
-
-//find a single by id
-exports.findOne = (req, res) => {
-    const id = req.params.id;
-
-    Event.findByPk(id)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error retrieving event with id=" + id
-            });
-        });
-};
-
-//update
-exports.update = (req, res) => {
-    const id = req.params.id;
-
-    Event.update(req.body, {
-        where: { id: id }
+    // Save event to PostgreSQL database
+    Events.create({
+        name: req.body.name,
+        desk: req.body.desk,
+        type: req.body.type,
+        //cords:
+    }).then(event => {
+        // Send created event to client
+        res.send(event);
+    }).catch(err => {
+        res.status(500).send("Error -> " + err);
     })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "Event was updated successfully"
-                });
-            } else {
-                res.send({
-                    message: `Cannot update event with id=${id}. Maybe event was not found or req.body is empty`
-                });
+};
+
+// Fetch all events
+exports.findAll = (req, res) => {
+    Events.findAll().then(event => {
+        // Send all events to Client
+        res.send(event);
+    }).catch(err => {
+        res.status(500).send("Error -> " + err);
+    })
+};
+
+// Find a Customer by Id
+exports.findById = (req, res) => {
+    Events.findById(req.params.id).then(event => {
+        res.send(event);
+    }).catch(err => {
+        res.status(500).send("Error -> " + err);
+    })
+};
+
+// Update a event
+exports.update = (req, res) => {
+    let event = req.body;
+    const id = req.params.id;
+    Events.update({
+            name: req.body.name,
+            desk: req.body.desk,
+            type: req.body.type,
+            //cords:
+        },
+        {
+            where: {
+                id: req.params.id
             }
         })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error updating event with id=" + id
-            });
-        });
+        .then(() => {
+            res.status(200).send(event);
+        }).catch(err => {
+        res.status(500).send("Error -> " + err);
+    })
 };
 
-//delete
+// Delete a event by Id
 exports.delete = (req, res) => {
     const id = req.params.id;
-
-    Event.destroy({
-        where: {id: id }
-    })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: `Cannot delete event with id=${id}. Maybe event was not found`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Could not delete event with id=" + id
-            });
-        });
+    Events.destroy({
+        where: { id: id }
+    }).then(() => {
+        res.status(200).send('event has been deleted!');
+    }).catch(err => {
+        res.status(500).send("Fail to delete!");
+    });
 };
-
-//delete all
-exports.deleteAll = (req, res) => {
-    Event.destroy({
-        where: {},
-        truncate: false
-    })
-        .then(nums => {
-            res.send({ message: `${nums} Events were deleted successfully` });
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Error with removing all events"
-            });
-        });
-};
-
-/*
-//find all today event
-exports.findAllToday = (req, res) => {
-
-};
-
- */

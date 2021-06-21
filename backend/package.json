@@ -1,18 +1,16 @@
 {
-  "name": "node_postgres",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Node.js Rest Apis with Express, Sequelize & PostgreSQL",
+  "description": "React + Node.js",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "nodejs",
-    "express",
-    "sequelize",
-    "postgresql",
-    "rest",
-    "api"
+    "Node.js",
+    "React",
+    "PostgreSQL",
+    "Express"
   ],
   "author": "nwave",
   "license": "ISC",
