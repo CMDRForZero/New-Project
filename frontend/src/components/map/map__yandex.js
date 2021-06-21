@@ -52,7 +52,7 @@ const Mapyandex = () => {
 
 						return <ActivePlacemark key={i} geometry={pm.geometry}
 																		ymaps={ymaps}
-																		balloonContent={<BContentFooter i={i} editPlacemark={editPlacemark}/>}
+																		balloonContent={<BContentFooter i={i} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/>}
 																		properties={pm.properties}
 																		options={pm.options}
 						/>
@@ -93,15 +93,33 @@ const Mapyandex = () => {
 		console.log(e)
 		console.log(i)
 		console.log(placemarks)
+		var cX = e['clientX']
+		var cY = e['clientY']
+		setModalProps({
+			clickX: cX,
+			clickY: cY,
+			cordX: placemarks[i]['geometry'][0]+0.001,
+			cordY: placemarks[i]['geometry'][1]+0.001,
+			type: placemarks[i]['properties']['tapy'],
+			name: placemarks[i]['properties']['iconCaption'],
+			desk: placemarks[i]['properties']['balloonContentBody'],
+			closeModal: closeModal,
+			createPlacemark: createPlacemarkFromModal
+		})
+		setIsModelShown(true)
+		setPlacemarks(placemarks.splice(i, 1))
 
 		// тут показываем модальной окно
 		// мы должны передать в модальное окно, что мы редактируем существующий элемент
 	}
-	function delitPlacemark (e){
+	function delitPlacemark (e, i){
+		//e.preventDefault()
 		// тут должен приходит index который мы хоти удалить
 		// удаление работае следующий образом
-		// setPlacemarks(placemarks.splice(index, 1))
-		e.preventDefault()
+		console.log(i)
+		 setPlacemarks(placemarks.splice(i, 1))
+		console.log(placemarks)
+		setYmaps(ymaps);
 	}
 	function createPlacemark(coords, name, ballon, tapy, onClick) {
 		// здесь приходит некоторый индекс, если мы редактируем существущую точку, то мы должны ее перезаписать
@@ -116,7 +134,8 @@ const Mapyandex = () => {
 			//  balloonContentHeader:'<div class="place"><img src="place1.png" class="place1"></div>', name,
 			balloonContentHeader:['<div class="place"><img src="/img/place1.png" class="place1" alt="метка">' + name + '</div>'].join(''),
 			iconCaption: name,
-			balloonContentBody: ballon
+			balloonContentBody: ballon,
+				tapy: tapy
 
 		}, options: {
 			iconLayout: 'default#image',
