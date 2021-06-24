@@ -119,15 +119,11 @@ body {
 	background-color: white;
 	font-size: 14px;
 	color: black;
-	min-width: 1516px;
 	margin: auto;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
 
-.wrapper {
-	width: 100%;
-}
 /*Хэдер*/
 .header {
 	position: fixed;
@@ -138,6 +134,7 @@ body {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	align-items: center;
+	text-align: center;
 	justify-content: space-between;
 	margin: auto;
 }
@@ -265,13 +262,15 @@ body {
 /*Глаывный экран*/
 .slogan {
 	position: relative;
-	width: 100vw;
-	height: 100vh;
+	max-width: 100%;
+	min-height: 100%;
 	margin: auto;
+	padding-bottom: 200px;
 	text-align: center;
 	background: url("../img/main-background.jpg");
-	mix-blend-mode: multiply;
-	background-size: 100% 100%;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
 
@@ -279,7 +278,7 @@ body {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 700;
 	font-size: 48px;
-	color: white;
+	color: #000000;
 	padding-top: 126px;
 	margin-bottom: 60px;
 }
@@ -288,7 +287,7 @@ body {
 	font-family: "Lato";
 	font-size: 24px;
 	font-weight: 500;
-	color: white;
+	color: #000000;
 	margin-bottom: 60px;
 }
 
@@ -316,9 +315,11 @@ body {
 }
 .score-container {
 	display: flex;
+	justify-content: center;
 }
 .score {
-	margin-left: 80px;
+	color: #ffffff;
+	padding-left: 80px;
 }
 .score h2:first-child {
 	font-family: "Lato";
@@ -327,7 +328,6 @@ body {
 	font-size: 50px;
 	line-height: 60px;
 	text-align: center;
-	color: #b9daff;
 }
 .score h2:last-child {
 	font-family: "Lato";
@@ -336,7 +336,6 @@ body {
 	font-size: 24px;
 	line-height: 29px;
 	text-align: center;
-	color: #e1dede;
 }
 /*Для кого*/
 .for-who {
@@ -359,12 +358,12 @@ body {
 	justify-content: space-between;
 }
 .natural {
-	width: 377px;
-	height: 436.26px;
+	width: 424px;
+	height: 390px;
 }
 .natural__img img {
-	width: 370.7px;
-	height: 308.91px;
+	width: 424px;
+	height: 318px;
 	margin-bottom: 30px;
 }
 .natural__text {
@@ -374,15 +373,16 @@ body {
 	font-size: 24px;
 	line-height: 28px;
 	text-align: center;
-	color: #000000;
+	color: #909090;
 }
 .legal-entity {
-	width: 570px;
-	height: 436px;
+	width: 424px;
+	height: 390px;
 }
 .legal-entity__img img {
-	width: 570px;
-	height: 339.2px;
+	width: 424px;
+	height: 318px;
+	margin-bottom: 30px;
 }
 .legal-entity__text {
 	font-family: "Ubuntu";
@@ -391,33 +391,36 @@ body {
 	font-size: 24px;
 	line-height: 28px;
 	text-align: center;
-	color: #000000;
+	color: #909090;
 }
 /*How*/
-.how-to-use{
+.how-to-use {
 	height: 621px;
-	margin-bottom: 250px;
+	margin: 150px 0px;
 }
-.how__slogan{
-	margin-left: -400px;
+
+.how__slogan {
 	font-family: "Open Sans", sans-serif;
 	font-style: italic;
 	font-weight: bold;
 	font-size: 64px;
 	line-height: 79px;
-	text-align: center;
 	color: rgba(113, 175, 248, 0.7);
 }
-.how__slogan a{
+.how__slogan a {
 	display: block;
+	margin-left: 125px;
+	font-family: "Open Sans", sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 64px;
+	line-height: 79px;
+	color: rgba(113, 175, 248, 0.7);
 }
-.how__slogan a:first-child{
-	margin-left: -325px;
-}
-.how__links{
+.how__links {
 	display: flex;
 }
-.how__reg{
+.how__reg {
 	position: relative;
 	margin: auto;
 	width: 400px;
@@ -426,46 +429,46 @@ body {
 	display: block;
 	justify-content: center;
 }
-.how__reg h2:first-child{
+.how__reg h2:first-child {
 	font-family: "Open Sans", sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 100px;
-line-height: 123px;
-color: #71AFF8;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 100px;
+	line-height: 123px;
+	color: #71aff8;
 }
-.how__reg h2:nth-child(2){
-font-family: "Open Sans", sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 36px;
-line-height: 44px;
-color: #71AFF8;
-}
-.how__reg h2:nth-child(3){
+.how__reg h2:nth-child(2) {
 	font-family: "Open Sans", sans-serif;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 159%;
-color: #717171;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 44px;
+	color: #71aff8;
+}
+.how__reg h2:nth-child(3) {
+	font-family: "Open Sans", sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 159%;
+	color: #717171;
 }
 .how__list {
-	color: #71AFF8;
+	color: #71aff8;
 	font-family: "Open Sans", sans-serif;
 	font-size: 24px;
 	font-weight: 600;
 	filter: drop-shadow(0px 0px 13px rgba(0, 0, 0, 0.3));
 	min-width: 364px;
 	min-height: 73px;
-	border: 2px solid #71AFF8;
+	border: 2px solid #71aff8;
 	background-color: white;
 	border-radius: 18px;
 	margin-bottom: 100px;
 }
-.how__list:hover{
+.how__list:hover {
 	color: white;
-	background: #71AFF8;
+	background: #71aff8;
 	transition: 0.5s;
 }
 .how__list:not(:hover) {
@@ -482,13 +485,14 @@ color: #717171;
 /*Вопросы*/
 .questions {
 	margin: auto;
-	width: 100vw;
 	padding-top: 61px;
 	padding-right: 61px;
 	font-family: "Lato";
 	color: #ffffff;
-	background-color: #71aff8;
+	background: #abd2ff;
 	padding: 70px 250px 30px 250px;
+	border-radius: 16px;
+	margin-bottom: 50px;
 }
 .questions__text {
 	font-family: "Open Sans", sans-serif;
@@ -517,7 +521,7 @@ color: #717171;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
-	background-color: #71aff8;
+	background: #abd2ff;
 	line-height: 29px;
 	margin-top: 40px;
 }
@@ -575,7 +579,7 @@ color: #717171;
 	opacity: 0.01;
 	transition: opacity 300ms ease-in;
 }
-#modalForm{
+#modalForm {
 	display: none;
 	border: 1px solid blue;
 	background-color: white;
@@ -584,6 +588,57 @@ color: #717171;
 	top: 50%;
 	left: 50%;
 }
-#modalForm input{
+#modalForm input {
 	border: 1px solid lightgrey;
+}
+/* footer */
+.footer__images {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.footer__images img {
+	margin: 20px 0;
+	margin-left: 50px;
+	width: 41px;
+	height: 41px;
+}
+.footer__text {
+	text-align: center;
+	font-family: "Lato";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 29px;
+	text-align: center;
+	color: #a7a7a7;
+}
+.footer__text h2 {
+	display: inline;
+	color: #7e7e7e;
+}
+/* некое подоюие адаптива*/
+
+
+@media (max-width: 400px) {
+	.how-to-use {
+		width: 100%;
+		height: 100%;
+	}
+	.how__links {
+		flex-direction: column;
+	}
+	.btn-cont {
+		position: relative;
+	}
+	.for-who__down {
+		align-items: center;
+		flex-direction: column;
+	}
+	.natural {
+		margin-bottom: 50px;
+	}
+	.how__slogan {
+		text-align: center;
+	}
 }
