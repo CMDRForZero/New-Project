@@ -9,7 +9,7 @@ const Useful = () => {
 					<img src="img/natural.jpg" alt=""></img>
 				</div>
 				<div className="natural__text">
-					Если ты постоянно в поисках чего-то нового
+					Тем, кто постоянно в поисках чего-то нового
 				</div>
 			</div>
 			<div className="useful__legal-entity legal-entity">
@@ -17,7 +17,7 @@ const Useful = () => {
 					<img src="/img/legal-unity.jpg" alt=""></img>
 				</div>
 				<div className="legal-entity__text">
-					Если ты являешься организатором крупных мероприятий
+					Организаторам крупных мероприятий
 				</div>
 			</div>
 		</Fragment>
