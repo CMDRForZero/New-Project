@@ -3,7 +3,7 @@ const questions = [
 		id: 1,
 		title: 'Создавать мероприятия можно какие угодно?',
 		info:
-			'Создавать мероприятия можно какие угодно?',
+			'Верно, при создании мероприятия нужно лишь указать: категорию, дату события и расположение.',
 	},
 	{
 		id: 2,
@@ -15,19 +15,13 @@ const questions = [
 		id: 3,
 		title: 'Обязательно ли регистрироваться по номеру телефона?',
 		info:
-			'Да, при создании мероприятий есть выбор либо создать сейчас, либо выбрать непосредственно дату.',
+			'Регистрация по номеру телефона - исключительно для вашего удобства. Так же зарегистрироваться возможно и другими способами.',
 	},
 	{
 		id: 4,
 		title: 'Чем ваш сервис отличается от других??',
 		info:
-			'Чем ваш сервис отличается от других?',
-	},
-	{
-		id: 5,
-		title: 'Section 1',
-		info:
-			'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint dolores eveniet doloremque? Minus sequiconsequatur autem voluptatibus, ab quisquam soluta iure voluptate quis neque quasi sit libero blanditiis velit assumenda?',
+			'Основное отличие в том, что вы можете попробовать себя в роли организатора мероприятия.',
 	},
 ]
 export default questions
