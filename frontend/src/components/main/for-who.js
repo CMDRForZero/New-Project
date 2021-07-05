@@ -6,7 +6,7 @@ const ForWho = () => {
 	return (
 		<Fragment>
 			<div className="for-who__top">
-				<h2>Для кого это может быть интересно?</h2>
+				<h2>Для кого?</h2>
 			</div>
 			<div className="for-who__down">
 				< Useful/>
