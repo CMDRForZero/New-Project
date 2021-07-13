@@ -2,7 +2,7 @@
 
 module.exports = function (app) {
 
-    const events = require('../controller/event.controller');
+    const events = require('../controllers/event.controller');
 
     //create new event
     app.post('/api/events/create', events.create);
