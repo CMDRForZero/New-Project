@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
+import usePostEvent from "../../hooks/usePostEvent";
+
 
 const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
+  const {postEvent} = usePostEvent()
   return ReactDOM.createPortal(
       <div id="modalForm" style={{position: "absolute", top: props.clickY, left: props.clickX}}>
         <label htmlFor="name">Название</label><br/>
@@ -25,6 +28,7 @@ const Form = ({props}) => {
   function safeForm() {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
     props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, type.current.value);
+    postEvent({cordX: props.cordX, cordY: props.cordY, name: props.name, desk: props.desk, type: props.type}).then(data => console.log(data))
     props.closeModal()
   }
 
