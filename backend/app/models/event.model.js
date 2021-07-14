@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
     const Event = sequelize.define("event", {
-        title: {
+        name: {
             type: Sequelize.STRING
         },
-        description: {
+        desk: {
             type: Sequelize.TEXT
         },
-        date: {
-            type: Sequelize.DATE
+        type: {
+            type: Sequelize.TEXT
         }
     });
 
