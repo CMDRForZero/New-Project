@@ -52,7 +52,7 @@ const Mapyandex = () => {
 
 						return <ActivePlacemark key={i} geometry={pm.geometry}
 																		ymaps={ymaps}
-																		balloonContent={<BContentFooter i={i} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/>}
+																		balloonContent={<div><div>{pm.properties.iconCaption}</div> <div>{pm.properties.balloonContentBody}</div> <BContentFooter i={i} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/></div>}
 																		properties={pm.properties}
 																		options={pm.options}
 						/>
@@ -85,6 +85,7 @@ const Mapyandex = () => {
 		setIsModelShown(true)
 	}
 	function createPlacemarkFromModal(cordX, cordY, name, desk, type) {
+		//alert(name + desk)
 		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
 		setPlacemarks([...placemarks, myPlacemark]);
 	}
@@ -121,7 +122,7 @@ const Mapyandex = () => {
 		console.log(placemarks)
 		setYmaps(ymaps);
 	}
-	function createPlacemark(coords, name, ballon, tapy, onClick) {
+	function createPlacemark(coords, name, ballon, tapy) {   //onClick
 		// здесь приходит некоторый индекс, если мы редактируем существущую точку, то мы должны ее перезаписать
 		// setPlacemarks(placemarks=>({
 		//    ...placemarks,
