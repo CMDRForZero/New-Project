@@ -77,8 +77,8 @@ const Mapyandex = () => {
 			cordX: coords[0],
 			cordY: coords[1],
 			type: "kokt",
-			name: "1231",
-			desk: "123",
+			name: "",
+			desk: "",
 			closeModal: closeModal,
 			createPlacemark: createPlacemarkFromModal
 		})
