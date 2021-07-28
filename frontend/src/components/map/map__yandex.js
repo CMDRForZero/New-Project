@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Map, YMaps } from "react-yandex-maps";
+import { Map, YMaps, GeolocationControl, Placemark } from "react-yandex-maps";
 import Form from "./form";
 import BContentFooter from "./bcontentFooter";
 import ActivePlacemark from "./active-placemark";
@@ -8,10 +8,16 @@ import ActivePlacemark from "./active-placemark";
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
 	const [ymaps, setYmaps] = useState(null);
+	const [cords, setCords] = useState(null);
 	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
 	const onSubmit = () => {
 		console.log('onSubmit true')
+	}
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition((pos) => setCords([pos.coords.latitude, pos.coords.longitude]), (e) => console.log(e));
+	} else {
+		console.log("Not Available");
 	}
 
 	 const showModal = () => {
@@ -57,6 +63,8 @@ const Mapyandex = () => {
 																		options={pm.options}
 						/>
 					})}
+					<GeolocationControl options={{ float: 'left' }} />
+					{cords && <Placemark geometry={cords} options={{preset: 'islands#blueCircleDotIcon'}}/>}
 				</Map>
 			</YMaps>
 			{/*<Form/>*/}
@@ -84,7 +92,7 @@ const Mapyandex = () => {
 		})
 		setIsModelShown(true)
 	}
-	function createPlacemarkFromModal(cordX, cordY, name, desk, type) {
+	function createPlacemarkFromModal(cordX, cordY, name, desk, type, categories) {
 		//alert(name + desk)
 		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
 		setPlacemarks([...placemarks, myPlacemark]);
@@ -99,8 +107,8 @@ const Mapyandex = () => {
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
-			cordX: placemarks[i]['geometry'][0]+0.001,
-			cordY: placemarks[i]['geometry'][1]+0.001,
+			cordX: placemarks[i]['geometry'][0],
+			cordY: placemarks[i]['geometry'][1],
 			type: placemarks[i]['properties']['tapy'],
 			name: placemarks[i]['properties']['iconCaption'],
 			desk: placemarks[i]['properties']['balloonContentBody'],
@@ -141,8 +149,8 @@ const Mapyandex = () => {
 		}, options: {
 			iconLayout: 'default#image',
 			iconImageHref: '/img/'+ tapy +'.png',
-			iconImageSize: [35, 47],
-			iconImageOffset: [-19, -44]
+			iconImageSize: [55, 67],
+			iconImageOffset: [-20, -48]
 			// preset: 'islands#violetDotIconWithCaption',
 			// draggable: false
 		},
@@ -151,6 +159,7 @@ const Mapyandex = () => {
 
 	};
 	}
+
 }
 
 

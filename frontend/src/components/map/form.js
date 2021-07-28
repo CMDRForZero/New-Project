@@ -1,10 +1,19 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
-
+import Select from 'react-select';
 const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
+    const [options, setOptions] = useState([
+        {label: 'Бар', value: "kokt"},
+        {label: 'Спорт', value: "bike"},
+        {label: 'Танцы', value: "dance"},
+        {label: 'Шопинг', value: "shoping"},
+        {label: 'Здоровье', value: "health"},
+        {label: 'Театр', value: "theatre"},
+    ]);
+    const [selected, setSelected] = useState([]);
   return ReactDOM.createPortal(
       <div id="modalForm" className="container w-25">
           <div className="row">
@@ -19,7 +28,22 @@ const Form = ({props}) => {
                       <textarea className="form-control mt-4" ref={desk} id="" cols="30" rows="3"
                                 placeholder="Описание"></textarea>
                       <input className="form-control mt-4" placeholder="&#x1F50D; Местоположение" type="text"/>
-                          <input className="form-control mt-4" ref={type} placeholder="Категория" type="text"/>
+                  <Select
+                      options={options} // Options to display in the dropdown
+                      onChange={setSelected}
+                      placeholder={"Категории"}
+                      isMulti={true}
+                      className="mt-4"
+                      styles={{
+                          control: (provided, state) => ({
+                              ...provided,
+                              border: "1px solid rgba(113, 175, 248, 0.54)",
+                              borderRadius: "8px",
+                          })
+                      }
+                      }
+
+                  />
                               <div className="row mt-2 ">
                                   <div className="col-12">
                                   </div>
@@ -32,10 +56,16 @@ const Form = ({props}) => {
       </div>,
         document.body
     );
+  function onSelect(selectedList, selectedItem) {
+      setSelected(selectedList)
+    }
 
+  function  onRemove(selectedList, removedItem) {
+    }
   function safeForm() {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
-    props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, type.current.value);
+      console.log(selected)
+    props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected);
     props.closeModal()
   }
 
