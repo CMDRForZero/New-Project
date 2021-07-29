@@ -579,8 +579,7 @@ body {
 	opacity: 0.01;
 	transition: opacity 300ms ease-in;
 }
-#modalForm {
-	display: none;
+#modalForm{
 	border: 1px solid blue;
 	background-color: white;
 	padding: 10px;
