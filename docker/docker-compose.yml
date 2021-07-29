@@ -21,7 +21,8 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres
+    image: postgres:12
+    container_name: postgres
     restart: always
     environment:
       - POSTGRES_PASSWORD=secret
