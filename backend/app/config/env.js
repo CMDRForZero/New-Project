@@ -2,7 +2,7 @@ const env = {
     database: 'clubmap',
     username: 'postgres',
     password: 'secret',
-    host: 'postgres',
+    host: 'localhost',
     dialect: 'postgres',
     pool: {
         max: 5,
