@@ -2,7 +2,7 @@ const env = {
     database: 'clubmap',
     username: 'postgres',
     password: 'secret',
-    host: 'dev_postgres_1',
+    host: 'host.docker.internal',
     dialect: 'postgres',
     pool: {
         max: 5,
