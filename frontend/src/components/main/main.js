@@ -4,7 +4,6 @@ import SloganTop from './slogan__top';
 import ForWho from './for-who';
 import How from './how';
 import Questions from './questions';
-import Footer from '../footer/footer';
 
 const Main = () => {
 	return (
@@ -12,16 +11,15 @@ const Main = () => {
 			<section className="header__slogan slogan">
 				< SloganTop/>
 			</section>
-			<section className="for-who" id="for-who">
+			<section className="for-who">
 				< ForWho/>
 			</section>
-			<section className="how-to-use" id="how">
+			<section className="how-to-use">
 				<How/>
 			</section>
-			<section className="questions" id="questions">
+			<section className="questions">
 				< Questions/>
 			</section>
-			<Footer/>
 		</Fragment>
 	);
 }

@@ -14,6 +14,7 @@ const Wrapper = () => {
 				<Header/>
 				<Route path="/" component={ Main } exact/>
 				<Route path="/map" component={ Map } exact/>
+				<Footer/>
 			</Fragment>
 		</Router>
 	);

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+
 import '../../css/style.scss';
 
 const Logo = () => {

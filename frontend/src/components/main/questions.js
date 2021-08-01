@@ -9,7 +9,7 @@ const Questions = () => {
 	return (
 		<Fragment>
 			<div className="questions__text">
-				Вопросы и ответы
+				Вопросы
 			</div>
 			<div className="questions__question">
 				{questions.map((question) => (

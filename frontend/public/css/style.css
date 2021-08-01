@@ -24,9 +24,7 @@ a:focus,
 a:active {
 	outline: none;
 }
-dl,ol,ul{
-	padding-left: 0px;
-}
+
 nav,
 footer,
 header,
@@ -87,7 +85,6 @@ h5,
 h6 {
 	font-size: inherit;
 	font-weight: 400;
-	margin-bottom: 0px;
 }
 
 /*---------------------------------*/
@@ -128,22 +125,7 @@ body {
 }
 
 /*Хэдер*/
-.header{
-	position: fixed;
-	top: 0;
-	z-index: 100;
-	width: 100vw;
-	display: flex;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	align-items: center;
-	text-align: center;
-	justify-content: space-between;
-	background-color: white;
-	margin: auto;
-	box-shadow: 0 5px 10px 3px rgba(0, 0, 0, .1);
-}
-.header-noscroll{
+.header {
 	position: fixed;
 	top: 0;
 	z-index: 100;
@@ -156,6 +138,7 @@ body {
 	justify-content: space-between;
 	margin: auto;
 }
+
 .logo-container {
 	margin-left: 20px;
 	display: flex;
@@ -188,7 +171,7 @@ body {
 }
 
 .menu__list li {
-	margin-right: 70px;
+	margin: 0px 10px;
 }
 
 .menu__list a:after {
@@ -390,7 +373,7 @@ body {
 	font-size: 24px;
 	line-height: 28px;
 	text-align: center;
-	color: black;
+	color: #909090;
 }
 .legal-entity {
 	width: 424px;
@@ -408,35 +391,31 @@ body {
 	font-size: 24px;
 	line-height: 28px;
 	text-align: center;
-	color: black;
+	color: #909090;
 }
 /*How*/
 .how-to-use {
-	background-color: #ABD2FF;
-	height: 750px;
-	padding-top: 67px;
-	margin: 150px 0 130px 0px;
+	height: 621px;
+	margin: 150px 0px;
 }
 
 .how__slogan {
 	font-family: "Open Sans", sans-serif;
 	font-style: italic;
 	font-weight: bold;
-	font-size: 50px;
+	font-size: 64px;
 	line-height: 79px;
-	text-align: center;
-	color: black;
-	padding-bottom: 60px;
+	color: rgba(113, 175, 248, 0.7);
 }
 .how__slogan a {
 	display: block;
-	margin: auto;
+	margin-left: 125px;
 	font-family: "Open Sans", sans-serif;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 50px;
+	font-size: 64px;
 	line-height: 79px;
-	color: black;
+	color: rgba(113, 175, 248, 0.7);
 }
 .how__links {
 	display: flex;
@@ -453,12 +432,10 @@ body {
 .how__reg h2:first-child {
 	font-family: "Open Sans", sans-serif;
 	font-style: normal;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 100px;
 	line-height: 123px;
-	color: #0093FF;
-
-
+	color: #71aff8;
 }
 .how__reg h2:nth-child(2) {
 	font-family: "Open Sans", sans-serif;
@@ -466,11 +443,10 @@ body {
 	font-weight: bold;
 	font-size: 36px;
 	line-height: 44px;
-	margin-bottom: 10px;
-	color: black;
+	color: #71aff8;
 }
 .how__reg h2:nth-child(3) {
-	font-family: "Lato", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 24px;
@@ -478,21 +454,21 @@ body {
 	color: #717171;
 }
 .how__list {
-	color: #0093FF;
+	color: #71aff8;
 	font-family: "Open Sans", sans-serif;
 	font-size: 24px;
-	font-weight: 700;
+	font-weight: 600;
+	filter: drop-shadow(0px 0px 13px rgba(0, 0, 0, 0.3));
 	min-width: 364px;
 	min-height: 73px;
-	background-color: #ABD2FF;
+	border: 2px solid #71aff8;
+	background-color: white;
 	border-radius: 18px;
 	margin-bottom: 100px;
 }
 .how__list:hover {
-	filter: drop-shadow(0px 0px 13px rgba(0, 0, 0, 0.3));
-	border: 2px solid #0093FF;
 	color: white;
-	background: #0093FF;
+	background: #71aff8;
 	transition: 0.5s;
 }
 .how__list:not(:hover) {
@@ -501,6 +477,7 @@ body {
 .btn-cont {
 	width: 100%;
 	height: 30px;
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	display: flex;
@@ -508,10 +485,12 @@ body {
 /*Вопросы*/
 .questions {
 	margin: auto;
+	padding-top: 61px;
+	padding-right: 61px;
 	font-family: "Lato";
 	color: #ffffff;
-	text-align: center;
-	padding: 0px 250px 60px 250px;
+	background: #abd2ff;
+	padding: 70px 250px 30px 250px;
 	border-radius: 16px;
 	margin-bottom: 50px;
 }
@@ -519,9 +498,9 @@ body {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 700;
 	font-style: italic;
-	color: black;
+	color: rgba(255, 255, 255, 0.7);
 	font-size: 64px;
-	padding: 70px 0px 60px 0px;
+	padding: 70px 0px 60px 100px;
 }
 .questions__question {
 	width: auto;
@@ -531,7 +510,7 @@ body {
 	transition: max-height 0.2s ease-out;
 }
 .question h4 {
-	color: #0093FF;
+	color: #ffffff;
 	cursor: pointer;
 	padding: 18px;
 	width: 100%;
@@ -542,6 +521,7 @@ body {
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
+	background: #abd2ff;
 	line-height: 29px;
 	margin-top: 40px;
 }
@@ -552,7 +532,7 @@ body {
 	font-size: 20px;
 	line-height: 24px;
 	letter-spacing: 0.07em;
-	color: #272727;
+	color: #ffffff;
 	padding-bottom: 20px;
 	padding: 0 20px;
 	overflow: hidden;
@@ -565,12 +545,11 @@ body {
 	align-items: center;
 }
 .btn {
-
 	background: transparent;
 	border-color: transparent;
 	width: 44px;
 	height: 44px;
-	background: rgba(216, 216, 216, 0.53);
+	background: rgba(255, 255, 255, 0.53);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -600,8 +579,7 @@ body {
 	opacity: 0.01;
 	transition: opacity 300ms ease-in;
 }
-#modalForm {
-	display: none;
+#modalForm{
 	border: 1px solid blue;
 	background-color: white;
 	padding: 10px;
