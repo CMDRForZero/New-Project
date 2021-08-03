@@ -75,15 +75,27 @@ const Mapyandex = () => {
 		</div>
 	);
 
-	function click(e) {
+	async function click(e) {
 		var cX = e.get('clientX')
 		var cY = e.get('clientY')
 		var coords = e.get('coords');
+		var address = '';
+		await fetch('https://geocode-maps.yandex.ru/1.x?'+ new URLSearchParams({geocode:coords.join(','),format:'json',sco: 'latlong', apikey:'e6e0ef67-816b-47fe-80db-17ec2ec7828e'}))
+			.then(response => {
+				const contentType = response.headers.get('content-type');
+				if (!contentType || !contentType.includes('application/json')) {
+					throw new TypeError("Oops, we haven't got JSON!");
+				}
+				return response.json();
+			})
+			.then(response => address = response.response.GeoObjectCollection.featureMember[0].GeoObject.name)
+      console.log(address)
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
 			cordX: coords[0],
 			cordY: coords[1],
+			address: address,
 			type: "kokt",
 			name: "1231",
 			desk: "123",

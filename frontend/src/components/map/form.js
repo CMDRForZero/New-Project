@@ -5,6 +5,7 @@ const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
+  let address = React.createRef();
     const [options, setOptions] = useState([
         {label: 'Бар', value: "kokt"},
         {label: 'Спорт', value: "bike"},
@@ -27,7 +28,7 @@ const Form = ({props}) => {
                   <input className="form-control mt-4" ref={name} placeholder="Название мероприятия" type="text"/>
                       <textarea className="form-control mt-4" ref={desk} id="" cols="30" rows="3"
                                 placeholder="Описание"></textarea>
-                      <input className="form-control mt-4" placeholder="&#x1F50D; Местоположение" type="text"/>
+                      <input className="form-control mt-4" ref={address} value={props.address} placeholder="&#x1F50D; Местоположение" type="text"/>
                   <Select
                       options={options} // Options to display in the dropdown
                       onChange={setSelected}
