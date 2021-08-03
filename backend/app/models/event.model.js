@@ -1,13 +1,19 @@
 module.exports = (sequelize, Sequelize) => {
     const Event = sequelize.define("event", {
-        title: {
+        cordX: {
+            type: Sequelize.FLOAT
+        },
+        cordY: {
+            type: Sequelize.FLOAT
+        },
+        name: {
             type: Sequelize.STRING
         },
-        description: {
+        desk: {
             type: Sequelize.TEXT
         },
-        date: {
-            type: Sequelize.DATE
+        type: {
+            type: Sequelize.TEXT
         }
     });
 

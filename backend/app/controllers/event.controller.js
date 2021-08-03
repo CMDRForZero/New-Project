@@ -5,6 +5,8 @@ const Events = db.event;
 exports.create = (req, res) => {
     // Save event to PostgreSQL database
     Events.create({
+        cordX: req.body.cordX,
+        cordY: req.body.cordY,
         name: req.body.name,
         desk: req.body.desk,
         type: req.body.type,
@@ -41,6 +43,8 @@ exports.update = (req, res) => {
     let event = req.body;
     const id = req.params.id;
     Events.update({
+            cordX: req.body.cordX,
+            cordY: req.body.cordY,
             name: req.body.name,
             desk: req.body.desk,
             type: req.body.type,
