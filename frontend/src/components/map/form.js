@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
 import Select from 'react-select';
+import usePostEvent from "../../hooks/usePostEvent";
+
 const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
+  const {postEvent} = usePostEvent()
     const [options, setOptions] = useState([
         {label: 'Бар', value: "kokt"},
         {label: 'Спорт', value: "bike"},
@@ -66,6 +69,7 @@ const Form = ({props}) => {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
       console.log(selected)
     props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected);
+    postEvent({cordX: props.cordX, cordY: props.cordY, name: name.current.value, desk: desk.current.value, type: selected[0].value}).then(data => console.log(data))
     props.closeModal()
   }
 

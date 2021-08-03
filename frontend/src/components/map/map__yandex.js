@@ -19,7 +19,6 @@ const Mapyandex = () => {
 			console.log(item)
 			item.forEach(element => {
 				console.log(element)
-				//newPlacemark(element.cordX, element.cordY, element.name, element.desk, element.type)
 				createPlacemarkFromModal(element.cordX, element.cordY, element.name, element.desk, element.type)
 			})
 		});
