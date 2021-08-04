@@ -65,15 +65,22 @@ const Form = ({props}) => {
 
   function  onRemove(selectedList, removedItem) {
     }
+
   function safeForm() {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
-      console.log(selected)
-    props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected);
-    postEvent({cordX: props.cordX, cordY: props.cordY, name: name.current.value, desk: desk.current.value, type: selected[0].value}).then(data => console.log(data))
-    props.closeModal()
+      // console.log(selected);
+      let eventID;
+      postEvent({cordX: props.cordX, cordY: props.cordY, name: name.current.value, desk: desk.current.value, type: selected[0].value})
+          .then(data => {
+              eventID = data.id;
+              console.log(data.id);
+              console.log(eventID);
+              props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected, eventID);
+              props.closeModal()
+          });
   }
 
-  function createPlacemark(coords, name, ballon, tapy) {
+  function createPlacemark(coords, name, ballon, tapy, eventID) {
     //	return new ymaps.Placemark(coords, {
     return {
       geometry: coords,
