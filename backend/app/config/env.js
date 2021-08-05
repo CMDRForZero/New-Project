@@ -1,8 +1,8 @@
 const env = {
-    database: 'testclubmap',
+    database: 'clubmap',
     username: 'postgres',
-    password: 'super',
-    host: 'localhost',
+    password: 'secret',
+    host: 'postgres',
     dialect: 'postgres',
     pool: {
         max: 5,

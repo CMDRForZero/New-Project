@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { Map, YMaps, GeolocationControl, Placemark } from "react-yandex-maps";
 import Form from "./form";
 import BContentFooter from "./bcontentFooter";
 import ActivePlacemark from "./active-placemark";
+//import useFetch from "../../hooks/useFetch";
 
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
@@ -11,6 +12,19 @@ const Mapyandex = () => {
 	const [cords, setCords] = useState(null);
 	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
+
+
+	useEffect(async () => {
+		const response = fetch("/api/events/").then(response => response.json()).then(item => {
+			console.log(item)
+			item.forEach(element => {
+				console.log(element)
+				//newPlacemark(element.cordX, element.cordY, element.name, element.desk, element.type)
+				createPlacemarkFromModal(element.cordX, element.cordY, element.name, element.desk, element.type)
+			})
+		});
+	}, []);
+
 	const onSubmit = () => {
 		console.log('onSubmit true')
 	}
@@ -97,8 +111,8 @@ const Mapyandex = () => {
 			cordY: coords[1],
 			address: address,
 			type: "kokt",
-			name: "1231",
-			desk: "123",
+			name: "",
+			desk: "",
 			closeModal: closeModal,
 			createPlacemark: createPlacemarkFromModal
 		})
@@ -107,8 +121,11 @@ const Mapyandex = () => {
 	function createPlacemarkFromModal(cordX, cordY, name, desk, type, categories) {
 		//alert(name + desk)
 		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
-		setPlacemarks([...placemarks, myPlacemark]);
+		//
+		//
+		setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
 	}
+
 	function editPlacemark(e, i) {
 		console.log("идет редактирование")
 		console.log(e)

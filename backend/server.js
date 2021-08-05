@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 
-require('./app/route/event.route.js')(app);
+require('./app/routes/event.route.js')(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

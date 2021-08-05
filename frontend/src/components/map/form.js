@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
 import Select from 'react-select';
+import usePostEvent from "../../hooks/usePostEvent";
+
+
 const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
+<<<<<<< frontend/src/components/map/form.js
   let address = React.createRef();
     const [options, setOptions] = useState([
         {label: 'Бар', value: "kokt"},
@@ -15,6 +19,9 @@ const Form = ({props}) => {
         {label: 'Театр', value: "theatre"},
     ]);
     const [selected, setSelected] = useState([]);
+=======
+  const {postEvent} = usePostEvent()
+>>>>>>> frontend/src/components/map/form.js
   return ReactDOM.createPortal(
       <div id="modalForm" className="container w-25">
           <div className="row">
@@ -65,8 +72,13 @@ const Form = ({props}) => {
     }
   function safeForm() {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
+<<<<<<< frontend/src/components/map/form.js
       console.log(selected)
     props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected);
+=======
+    props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, type.current.value);
+    postEvent({cordX: props.cordX, cordY: props.cordY, name: name.current.value, desk: desk.current.value, type: type.current.value}).then(data => console.log(data))
+>>>>>>> frontend/src/components/map/form.js
     props.closeModal()
   }
 
