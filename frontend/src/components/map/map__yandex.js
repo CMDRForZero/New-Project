@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { Map, YMaps } from "react-yandex-maps";
+import { Map, YMaps, GeolocationControl, Placemark } from "react-yandex-maps";
 import Form from "./form";
 import BContentFooter from "./bcontentFooter";
 import ActivePlacemark from "./active-placemark";
@@ -9,6 +9,7 @@ import ActivePlacemark from "./active-placemark";
 const Mapyandex = () => {
 	const [placemarks, setPlacemarks] = useState([]);
 	const [ymaps, setYmaps] = useState(null);
+	const [cords, setCords] = useState(null);
 	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
 
@@ -26,6 +27,11 @@ const Mapyandex = () => {
 
 	const onSubmit = () => {
 		console.log('onSubmit true')
+	}
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition((pos) => setCords([pos.coords.latitude, pos.coords.longitude]), (e) => console.log(e));
+	} else {
+		console.log("Not Available");
 	}
 
 	 const showModal = () => {
@@ -66,11 +72,13 @@ const Mapyandex = () => {
 
 						return <ActivePlacemark key={i} geometry={pm.geometry}
 																		ymaps={ymaps}
-																		balloonContent={<BContentFooter i={i} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/>}
+																		balloonContent={<div><div>{pm.properties.iconCaption}</div> <div>{pm.properties.balloonContentBody}</div> <BContentFooter i={i} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/></div>}
 																		properties={pm.properties}
 																		options={pm.options}
 						/>
 					})}
+					<GeolocationControl options={{ float: 'left' }} />
+					{cords && <Placemark geometry={cords} options={{preset: 'islands#blueCircleDotIcon'}}/>}
 				</Map>
 			</YMaps>
 			{/*<Form/>*/}
@@ -81,15 +89,27 @@ const Mapyandex = () => {
 		</div>
 	);
 
-	function click(e) {
+	async function click(e) {
 		var cX = e.get('clientX')
 		var cY = e.get('clientY')
 		var coords = e.get('coords');
+		var address = '';
+		await fetch('https://geocode-maps.yandex.ru/1.x?'+ new URLSearchParams({geocode:coords.join(','),format:'json',sco: 'latlong', apikey:'e6e0ef67-816b-47fe-80db-17ec2ec7828e'}))
+			.then(response => {
+				const contentType = response.headers.get('content-type');
+				if (!contentType || !contentType.includes('application/json')) {
+					throw new TypeError("Oops, we haven't got JSON!");
+				}
+				return response.json();
+			})
+			.then(response => address = response.response.GeoObjectCollection.featureMember[0].GeoObject.name)
+      console.log(address)
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
 			cordX: coords[0],
 			cordY: coords[1],
+			address: address,
 			type: "kokt",
 			name: "",
 			desk: "",
@@ -98,7 +118,8 @@ const Mapyandex = () => {
 		})
 		setIsModelShown(true)
 	}
-	function createPlacemarkFromModal(cordX, cordY, name, desk, type) {
+	function createPlacemarkFromModal(cordX, cordY, name, desk, type, categories) {
+		//alert(name + desk)
 		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
 		//
 		//
@@ -115,8 +136,8 @@ const Mapyandex = () => {
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
-			cordX: placemarks[i]['geometry'][0]+0.001,
-			cordY: placemarks[i]['geometry'][1]+0.001,
+			cordX: placemarks[i]['geometry'][0],
+			cordY: placemarks[i]['geometry'][1],
 			type: placemarks[i]['properties']['tapy'],
 			name: placemarks[i]['properties']['iconCaption'],
 			desk: placemarks[i]['properties']['balloonContentBody'],
@@ -138,7 +159,7 @@ const Mapyandex = () => {
 		console.log(placemarks)
 		setYmaps(ymaps);
 	}
-	function createPlacemark(coords, name, ballon, tapy, onClick) {
+	function createPlacemark(coords, name, ballon, tapy) {   //onClick
 		// здесь приходит некоторый индекс, если мы редактируем существущую точку, то мы должны ее перезаписать
 		// setPlacemarks(placemarks=>({
 		//    ...placemarks,
@@ -157,8 +178,8 @@ const Mapyandex = () => {
 		}, options: {
 			iconLayout: 'default#image',
 			iconImageHref: '/img/'+ tapy +'.png',
-			iconImageSize: [35, 47],
-			iconImageOffset: [-19, -44]
+			iconImageSize: [55, 67],
+			iconImageOffset: [-20, -48]
 			// preset: 'islands#violetDotIconWithCaption',
 			// draggable: false
 		},
@@ -167,6 +188,7 @@ const Mapyandex = () => {
 
 	};
 	}
+
 }
 
 
