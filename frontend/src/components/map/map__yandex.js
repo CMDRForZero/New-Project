@@ -18,8 +18,6 @@ const Mapyandex = () => {
 		const response = fetch("/api/events/").then(response => response.json()).then(item => {
 			console.log(item)
 			item.forEach(element => {
-				console.log("++++++++++++")
-				console.log(element.id)
 				createPlacemarkFromModal(element.cordX, element.cordY, element.name, element.desk, element.type, element.id)
 			})
 		});
@@ -113,26 +111,40 @@ const Mapyandex = () => {
 		setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
 	}
 
+
+	function updatePlacemark(cordX, cordY, name, desk, type, eventID, categories) {
+		fetch("/api/events/" + eventID, {
+			method: 'put',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(placemarks[eventID])
+		}).then(res => res.json())
+	}
+
 	function editPlacemark(e, i) {
 		console.log("идет редактирование");
 		console.log(e);
 		console.log(i);
+		let frontEventID = i;
+		console.log("!!!!!!");
+		console.log(frontEventID);
 		console.log(placemarks);
 		var cX = e['clientX'];
 		var cY = e['clientY'];
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
-			cordX: placemarks[i]['geometry'][0],
-			cordY: placemarks[i]['geometry'][1],
-			type: placemarks[i]['properties']['tapy'],
-			name: placemarks[i]['properties']['iconCaption'],
-			desk: placemarks[i]['properties']['balloonContentBody'],
+			cordX: placemarks[frontEventID]['geometry'][0],
+			cordY: placemarks[frontEventID]['geometry'][1],
+			type: placemarks[frontEventID]['properties']['tapy'],
+			name: placemarks[frontEventID]['properties']['iconCaption'],
+			desk: placemarks[frontEventID]['properties']['balloonContentBody'],
 			closeModal: closeModal,
-			createPlacemark: createPlacemarkFromModal
+			createPlacemark: updatePlacemark
 		})
 		setIsModelShown(true)
-		setPlacemarks(placemarks.splice(i, 1))
+		setPlacemarks(placemarks.splice(frontEventID, 1))
 
 		// тут показываем модальной окно
 		// мы должны передать в модальное окно, что мы редактируем существующий элемент
