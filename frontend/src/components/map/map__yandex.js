@@ -3,7 +3,8 @@ import React, {useEffect, useState} from 'react';
 import { Map, YMaps, GeolocationControl, Placemark } from "react-yandex-maps";
 import Form from "./form";
 import BContentFooter from "./bcontentFooter";
-import ActivePlacemark from "./active-placemark";
+import ActivePlacemark from "./active-placemark"
+import usePostEvent from "../../hooks/usePostEvent";
 //import useFetch from "../../hooks/useFetch";
 
 const Mapyandex = () => {
@@ -12,13 +13,14 @@ const Mapyandex = () => {
 	const [cords, setCords] = useState(null);
 	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
-
+	const {postEvent} = usePostEvent();
 
 	useEffect(async () => {
 		const response = fetch("/api/events/").then(response => response.json()).then(item => {
 			console.log(item)
 			item.forEach(element => {
-				createPlacemarkFromModal(element.cordX, element.cordY, element.name, element.desk, element.type, element.id)
+				let myPlacemark = createPlacemark([element.cordX, element.cordY], element.name, element.desk, element.type, element.id);
+				setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
 			})
 		});
 	}, []);
@@ -107,19 +109,32 @@ const Mapyandex = () => {
 	}
 	function createPlacemarkFromModal(cordX, cordY, name, desk, type, eventID, categories) {
 		//alert(name + desk)
-		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type, eventID);
-		setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
+		postEvent({cordX: cordX, cordY: cordY, name: name, desk: desk, type: type})
+			.then(data => {
+				eventID = data.id;
+				let myPlacemark = createPlacemark([cordX, cordY], name, desk, type, eventID);
+				setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
+			});
 	}
 
 
+
+
 	function updatePlacemark(cordX, cordY, name, desk, type, eventID, categories) {
+		const updateObject = placemarks.find(element => element.properties.eventID === eventID);
+		updateObject.properties.name = name;
+		updateObject.properties.desk = desk;
+		updateObject.properties.type = type;
 		fetch("/api/events/" + eventID, {
 			method: 'put',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(placemarks[eventID])
+			body: JSON.stringify({cordX: cordX, cordY: cordY, name: name, desk: desk, type: type})
 		}).then(res => res.json())
+			.then(() => {
+				setPlacemarks(placemarks.map(item => item.properties.eventID === eventID ? updateObject : item));
+			})
 	}
 
 	function editPlacemark(e, i) {
@@ -127,24 +142,26 @@ const Mapyandex = () => {
 		console.log(e);
 		console.log(i);
 		let frontEventID = i;
+		let ID = placemarks.find(element => element.properties.eventID == frontEventID);
 		console.log("!!!!!!");
 		console.log(frontEventID);
-		console.log(placemarks);
+		console.log(ID);
 		var cX = e['clientX'];
 		var cY = e['clientY'];
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
-			cordX: placemarks[frontEventID]['geometry'][0],
-			cordY: placemarks[frontEventID]['geometry'][1],
-			type: placemarks[frontEventID]['properties']['tapy'],
-			name: placemarks[frontEventID]['properties']['iconCaption'],
-			desk: placemarks[frontEventID]['properties']['balloonContentBody'],
+			cordX: ID['geometry'][0],
+			cordY: ID['geometry'][1],
+			type: ID['properties']['tapy'],
+			name: ID['properties']['iconCaption'],
+			desk: ID['properties']['balloonContentBody'],
+			eventID: frontEventID,
 			closeModal: closeModal,
 			createPlacemark: updatePlacemark
 		})
 		setIsModelShown(true)
-		setPlacemarks(placemarks.splice(frontEventID, 1))
+		//setPlacemarks(placemarks.map(item => item.properties.eventID === frontEventID ? ID : item))
 
 		// тут показываем модальной окно
 		// мы должны передать в модальное окно, что мы редактируем существующий элемент

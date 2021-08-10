@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
 import Select from 'react-select';
-import usePostEvent from "../../hooks/usePostEvent";
+//import usePostEvent from "../../hooks/usePostEvent";
 
 const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
-  const {postEvent} = usePostEvent()
+  //const {postEvent} = usePostEvent()
     const [options, setOptions] = useState([
         {label: 'Бар', value: "kokt"},
         {label: 'Спорт', value: "bike"},
@@ -69,15 +69,9 @@ const Form = ({props}) => {
   function safeForm() {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
       // console.log(selected);
-      let eventID;
-      postEvent({cordX: props.cordX, cordY: props.cordY, name: name.current.value, desk: desk.current.value, type: selected[0].value})
-          .then(data => {
-              eventID = data.id;
-              console.log(data.id);
-              console.log(eventID);
-              props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected, eventID);
-              props.closeModal()
-          });
+
+      props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, props.eventID, selected);
+      props.closeModal()
   }
 
   function createPlacemark(coords, name, ballon, tapy, eventID) {
