@@ -133,7 +133,8 @@ const Mapyandex = () => {
 			body: JSON.stringify({cordX: cordX, cordY: cordY, name: name, desk: desk, type: type})
 		}).then(res => res.json())
 			.then(() => {
-				setPlacemarks(placemarks.map(item => item.properties.eventID === eventID ? updateObject : item));
+				setPlacemarks(placemarks.filter(element => element.properties.eventID !== i));
+				setPlacemarks(placemarks => ([...placemarks, ...updateObject]));
 			})
 	}
 
@@ -180,7 +181,7 @@ const Mapyandex = () => {
 		// тут должен приходит index который мы хоти удалить
 		// удаление работае следующий образом
 		console.log(i);
-		setPlacemarks(placemarks.splice(i, 1));
+		setPlacemarks(placemarks.filter(element => element.properties.eventID !== i));
 		console.log(placemarks);
 		setYmaps(ymaps);
 	}
