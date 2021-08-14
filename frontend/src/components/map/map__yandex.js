@@ -5,10 +5,12 @@ import Form from "./form";
 import BContentFooter from "./bcontentFooter";
 import ActivePlacemark from "./active-placemark"
 import usePostEvent from "../../hooks/usePostEvent";
+import {usePlacemark} from "../../hooks/usePlacemark";
 //import useFetch from "../../hooks/useFetch";
 
 const Mapyandex = () => {
-	const [placemarks, setPlacemarks] = useState([]);
+	const {placemarks, savePlacemark} = usePlacemark();
+	//const [placemarks, savePlacemark] = useState([]);
 	const [ymaps, setYmaps] = useState(null);
 	const [cords, setCords] = useState(null);
 	const [modalProps, setModalProps] = useState({});
@@ -20,7 +22,7 @@ const Mapyandex = () => {
 			console.log(item)
 			item.forEach(element => {
 				let myPlacemark = createPlacemark([element.cordX, element.cordY], element.name, element.desk, element.type, element.id);
-				setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
+				savePlacemark(placemarks => ([...placemarks, ...myPlacemark]));
 			})
 		});
 	}, []);
@@ -113,7 +115,7 @@ const Mapyandex = () => {
 			.then(data => {
 				eventID = data.id;
 				let myPlacemark = createPlacemark([cordX, cordY], name, desk, type, eventID);
-				setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
+				savePlacemark(placemarks => ([...placemarks, ...myPlacemark]));
 			});
 	}
 
@@ -133,8 +135,8 @@ const Mapyandex = () => {
 			body: JSON.stringify({cordX: cordX, cordY: cordY, name: name, desk: desk, type: type})
 		}).then(res => res.json())
 			.then(() => {
-				setPlacemarks(placemarks.filter(element => element.properties.eventID !== i));
-				setPlacemarks(placemarks => ([...placemarks, ...updateObject]));
+				savePlacemark(placemarks.filter(element => element.properties.eventID !== i));
+				savePlacemark(placemarks => ([...placemarks, ...updateObject]));
 			})
 	}
 
@@ -162,7 +164,7 @@ const Mapyandex = () => {
 			createPlacemark: updatePlacemark
 		})
 		setIsModelShown(true)
-		//setPlacemarks(placemarks.map(item => item.properties.eventID === frontEventID ? ID : item))
+		//savePlacemark(placemarks.map(item => item.properties.eventID === frontEventID ? ID : item))
 
 		// тут показываем модальной окно
 		// мы должны передать в модальное окно, что мы редактируем существующий элемент
@@ -181,14 +183,14 @@ const Mapyandex = () => {
 		// тут должен приходит index который мы хоти удалить
 		// удаление работае следующий образом
 		console.log(i);
-		setPlacemarks(placemarks.filter(element => element.properties.eventID !== i));
+		savePlacemark(placemarks.filter(element => element.properties.eventID !== i));
 		console.log(placemarks);
 		setYmaps(ymaps);
 	}
 
 	function createPlacemark(coords, name, ballon, tapy, eventID) {   //onClick
 		// здесь приходит некоторый индекс, если мы редактируем существущую точку, то мы должны ее перезаписать
-		// setPlacemarks(placemarks=>({
+		// savePlacemark(placemarks=>({
 		//    ...placemarks,
 		//    [index]: измененный элемент
 		// }))
