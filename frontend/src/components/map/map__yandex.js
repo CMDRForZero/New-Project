@@ -19,7 +19,6 @@ const Mapyandex = () => {
 
 	useEffect(async () => {
 		const response = fetch("/api/events/").then(response => response.json()).then(item => {
-			console.log(item)
 			item.forEach(element => {
 				let myPlacemark = createPlacemark([element.cordX, element.cordY], element.name, element.desk, element.type, element.id);
 				savePlacemark(placemarks => ([...placemarks, ...myPlacemark]));
@@ -71,8 +70,6 @@ const Mapyandex = () => {
 					]}
 				>
 					{placemarks.map((pm) => {
-						console.log("-----------")
-						console.log(pm.properties.eventID)
 						return <ActivePlacemark key={pm.properties.eventID} geometry={pm.geometry}
 																		ymaps={ymaps}
 																		balloonContent={<div><div>{pm.properties.iconCaption}</div> <div>{pm.properties.balloonContentBody}</div> <BContentFooter eventID={pm.properties.eventID} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/></div>}
@@ -146,9 +143,6 @@ const Mapyandex = () => {
 		console.log(i);
 		let frontEventID = i;
 		let ID = placemarks.find(element => element.properties.eventID == frontEventID);
-		console.log("!!!!!!");
-		console.log(frontEventID);
-		console.log(ID);
 		var cX = e['clientX'];
 		var cY = e['clientY'];
 		setModalProps({
@@ -170,7 +164,6 @@ const Mapyandex = () => {
 		// мы должны передать в модальное окно, что мы редактируем существующий элемент
 	}
 	function delitPlacemark (e, i){
-
 		fetch("/api/events/" + i, {
 			method: 'delete',
 			headers: {
@@ -182,7 +175,6 @@ const Mapyandex = () => {
 
 		// тут должен приходит index который мы хоти удалить
 		// удаление работае следующий образом
-		console.log(i);
 		savePlacemark(placemarks.filter(element => element.properties.eventID !== i));
 		console.log(placemarks);
 		setYmaps(ymaps);
