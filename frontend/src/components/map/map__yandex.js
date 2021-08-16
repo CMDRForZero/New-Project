@@ -3,24 +3,25 @@ import React, {useEffect, useState} from 'react';
 import { Map, YMaps, GeolocationControl, Placemark } from "react-yandex-maps";
 import Form from "./form";
 import BContentFooter from "./bcontentFooter";
-import ActivePlacemark from "./active-placemark";
+import ActivePlacemark from "./active-placemark"
+import usePostEvent from "../../hooks/usePostEvent";
+import {usePlacemark} from "../../hooks/usePlacemark";
 //import useFetch from "../../hooks/useFetch";
 
 const Mapyandex = () => {
-	const [placemarks, setPlacemarks] = useState([]);
+	const {placemarks, savePlacemark} = usePlacemark();
+	//const [placemarks, savePlacemark] = useState([]);
 	const [ymaps, setYmaps] = useState(null);
 	const [cords, setCords] = useState(null);
 	const [modalProps, setModalProps] = useState({});
 	const [isModelShown, setIsModelShown] = useState(false);
-
+	const {postEvent} = usePostEvent();
 
 	useEffect(async () => {
 		const response = fetch("/api/events/").then(response => response.json()).then(item => {
-			console.log(item)
 			item.forEach(element => {
-				console.log(element)
-				//newPlacemark(element.cordX, element.cordY, element.name, element.desk, element.type)
-				createPlacemarkFromModal(element.cordX, element.cordY, element.name, element.desk, element.type)
+				let myPlacemark = createPlacemark([element.cordX, element.cordY], element.name, element.desk, element.type, element.id);
+				savePlacemark(placemarks => ([...placemarks, ...myPlacemark]));
 			})
 		});
 	}, []);
@@ -68,11 +69,10 @@ const Mapyandex = () => {
 						'clusterer.addon.balloon',
 					]}
 				>
-					{placemarks.map((pm, i) => {
-
-						return <ActivePlacemark key={i} geometry={pm.geometry}
+					{placemarks.map((pm) => {
+						return <ActivePlacemark key={pm.properties.eventID} geometry={pm.geometry}
 																		ymaps={ymaps}
-																		balloonContent={<div><div>{pm.properties.iconCaption}</div> <div>{pm.properties.balloonContentBody}</div> <BContentFooter i={i} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/></div>}
+																		balloonContent={<div><div>{pm.properties.iconCaption}</div> <div>{pm.properties.balloonContentBody}</div> <BContentFooter eventID={pm.properties.eventID} editPlacemark={editPlacemark} delitePlacemark={delitPlacemark}/></div>}
 																		properties={pm.properties}
 																		options={pm.options}
 						/>
@@ -118,50 +118,83 @@ const Mapyandex = () => {
 		})
 		setIsModelShown(true)
 	}
-	function createPlacemarkFromModal(cordX, cordY, name, desk, type, categories) {
+	function createPlacemarkFromModal(cordX, cordY, name, desk, type, eventID, categories) {
 		//alert(name + desk)
-		let myPlacemark = createPlacemark([cordX, cordY], name, desk, type);
-		//
-		//
-		setPlacemarks(placemarks => ([...placemarks, ...myPlacemark]));
+		postEvent({cordX: cordX, cordY: cordY, name: name, desk: desk, type: type})
+			.then(data => {
+				eventID = data.id;
+				let myPlacemark = createPlacemark([cordX, cordY], name, desk, type, eventID);
+				savePlacemark(placemarks => ([...placemarks, ...myPlacemark]));
+			});
+	}
+
+
+
+
+	function updatePlacemark(cordX, cordY, name, desk, type, eventID, categories) {
+		const updateObject = placemarks.find(element => element.properties.eventID === eventID);
+		updateObject.properties.name = name;
+		updateObject.properties.desk = desk;
+		updateObject.properties.type = type;
+		fetch("/api/events/" + eventID, {
+			method: 'put',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({cordX: cordX, cordY: cordY, name: name, desk: desk, type: type})
+		}).then(res => res.json())
+			.then(() => {
+				savePlacemark(placemarks.filter(element => element.properties.eventID !== i));
+				savePlacemark(placemarks => ([...placemarks, ...updateObject]));
+			})
 	}
 
 	function editPlacemark(e, i) {
-		console.log("идет редактирование")
-		console.log(e)
-		console.log(i)
-		console.log(placemarks)
-		var cX = e['clientX']
-		var cY = e['clientY']
+		console.log("идет редактирование");
+		console.log(e);
+		console.log(i);
+		let frontEventID = i;
+		let ID = placemarks.find(element => element.properties.eventID == frontEventID);
+		var cX = e['clientX'];
+		var cY = e['clientY'];
 		setModalProps({
 			clickX: cX,
 			clickY: cY,
-			cordX: placemarks[i]['geometry'][0],
-			cordY: placemarks[i]['geometry'][1],
-			type: placemarks[i]['properties']['tapy'],
-			name: placemarks[i]['properties']['iconCaption'],
-			desk: placemarks[i]['properties']['balloonContentBody'],
+			cordX: ID['geometry'][0],
+			cordY: ID['geometry'][1],
+			type: ID['properties']['tapy'],
+			name: ID['properties']['iconCaption'],
+			desk: ID['properties']['balloonContentBody'],
+			eventID: frontEventID,
 			closeModal: closeModal,
-			createPlacemark: createPlacemarkFromModal
+			createPlacemark: updatePlacemark
 		})
 		setIsModelShown(true)
-		setPlacemarks(placemarks.splice(i, 1))
+		//savePlacemark(placemarks.map(item => item.properties.eventID === frontEventID ? ID : item))
 
 		// тут показываем модальной окно
 		// мы должны передать в модальное окно, что мы редактируем существующий элемент
 	}
 	function delitPlacemark (e, i){
-		//e.preventDefault()
+		fetch("/api/events/" + i, {
+			method: 'delete',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: null
+		})
+			.then(response => response.json());
+
 		// тут должен приходит index который мы хоти удалить
 		// удаление работае следующий образом
-		console.log(i)
-		 setPlacemarks(placemarks.splice(i, 1))
-		console.log(placemarks)
+		savePlacemark(placemarks.filter(element => element.properties.eventID !== i));
+		console.log(placemarks);
 		setYmaps(ymaps);
 	}
-	function createPlacemark(coords, name, ballon, tapy) {   //onClick
+
+	function createPlacemark(coords, name, ballon, tapy, eventID) {   //onClick
 		// здесь приходит некоторый индекс, если мы редактируем существущую точку, то мы должны ее перезаписать
-		// setPlacemarks(placemarks=>({
+		// savePlacemark(placemarks=>({
 		//    ...placemarks,
 		//    [index]: измененный элемент
 		// }))
@@ -173,7 +206,8 @@ const Mapyandex = () => {
 			balloonContentHeader:['<div class="place"><img src="/img/place1.png" class="place1" alt="метка">' + name + '</div>'].join(''),
 			iconCaption: name,
 			balloonContentBody: ballon,
-				tapy: tapy
+				tapy: tapy,
+				eventID: eventID
 
 		}, options: {
 			iconLayout: 'default#image',

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, useLocation } from 'react-router-dom';
 
-import '../../css/style.scss';
-
 import Menulist from './menu__list';
-
+import '../../css/style.scss';
 
 const Menubody = () => {
 	const path = useLocation().pathname

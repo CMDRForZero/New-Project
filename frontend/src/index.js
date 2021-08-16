@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/header/header';
 import Main from './components/main/main';
 import Map from './components/map/map';
-import Footer from './components/footer/footer';
 
 const Wrapper = () => {
 	return (
@@ -14,7 +13,6 @@ const Wrapper = () => {
 				<Header/>
 				<Route path="/" component={ Main } exact/>
 				<Route path="/map" component={ Map } exact/>
-				<Footer/>
 			</Fragment>
 		</Router>
 	);

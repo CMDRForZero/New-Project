@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
 import ReactDOM from "react-dom";
 import Select from 'react-select';
-import usePostEvent from "../../hooks/usePostEvent";
-
+//import usePostEvent from "../../hooks/usePostEvent";
 
 const Form = ({props}) => {
   let name = React.createRef();
   let desk = React.createRef();
   let type = React.createRef();
-<<<<<<< frontend/src/components/map/form.js
-  let address = React.createRef();
+  //const {postEvent} = usePostEvent()
     const [options, setOptions] = useState([
         {label: 'Бар', value: "kokt"},
         {label: 'Спорт', value: "bike"},
@@ -19,9 +17,6 @@ const Form = ({props}) => {
         {label: 'Театр', value: "theatre"},
     ]);
     const [selected, setSelected] = useState([]);
-=======
-  const {postEvent} = usePostEvent()
->>>>>>> frontend/src/components/map/form.js
   return ReactDOM.createPortal(
       <div id="modalForm" className="container w-25">
           <div className="row">
@@ -35,7 +30,7 @@ const Form = ({props}) => {
                   <input className="form-control mt-4" ref={name} placeholder="Название мероприятия" type="text"/>
                       <textarea className="form-control mt-4" ref={desk} id="" cols="30" rows="3"
                                 placeholder="Описание"></textarea>
-                      <input className="form-control mt-4" ref={address} value={props.address} placeholder="&#x1F50D; Местоположение" type="text"/>
+                      <input className="form-control mt-4" placeholder="&#x1F50D; Местоположение" type="text"/>
                   <Select
                       options={options} // Options to display in the dropdown
                       onChange={setSelected}
@@ -70,19 +65,16 @@ const Form = ({props}) => {
 
   function  onRemove(selectedList, removedItem) {
     }
+
   function safeForm() {
     // тут мы должны передать в createPlacemark что мы редактируем какую то точку
-<<<<<<< frontend/src/components/map/form.js
-      console.log(selected)
-    props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, selected);
-=======
-    props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, type.current.value);
-    postEvent({cordX: props.cordX, cordY: props.cordY, name: name.current.value, desk: desk.current.value, type: type.current.value}).then(data => console.log(data))
->>>>>>> frontend/src/components/map/form.js
-    props.closeModal()
+      // console.log(selected);
+
+      props.createPlacemark(props.cordX, props.cordY, name.current.value, desk.current.value, selected[0].value, props.eventID, selected);
+      props.closeModal()
   }
 
-  function createPlacemark(coords, name, ballon, tapy) {
+  function createPlacemark(coords, name, ballon, tapy, eventID) {
     //	return new ymaps.Placemark(coords, {
     return {
       geometry: coords,
