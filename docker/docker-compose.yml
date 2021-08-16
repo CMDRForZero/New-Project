@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:12
+    image: postgres:13
     container_name: postgres
     restart: always
     environment:
@@ -32,6 +32,19 @@ services:
       mp:
     ports:
       - 5432:5432
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    command: server /data --console-address ":9001"
+    expose:
+      - "9000"
+      - "9001"
+    networks:
+      mp:
+    ports:
+      - 9000:9000
+      - 9001:9001
 
 networks:
   mp:
