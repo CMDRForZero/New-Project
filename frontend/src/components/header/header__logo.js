@@ -1,14 +1,24 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 import Logo from './logo';
 
+const LogoContainer = styled.div`
+	margin-left: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
 const HeaderLogo = () => {
 	return (
 		<Link to="/">
-			<div className="logo-container">
-				< Logo/>
-			</div>
+			<LogoContainer>
+				<div>
+					< Logo/>
+				</div>
+			</LogoContainer>
 		</Link>
 	);
 }

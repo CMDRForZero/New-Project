@@ -1,11 +1,28 @@
 import React, { Fragment } from 'react';
-import '../../css/style.scss';
+import styled from '@emotion/styled';
+
+const StyleLogo = styled.div`
+	width: 45px;
+	height: 45px;
+	border-radius: 9px;
+	margin-right: 5px;
+`;
+const StyleText = styled.div`
+	font-family: "Neometric";
+	font-size: 22px;
+	font-weight: 700;
+	color: #000;
+`;
 
 const Logo = () => {
 	return (
 		<Fragment>
-			<a className="header__logo"><img src="img/logo.png" alt=""></img></a>
-			<a className="header__text">club map</a>
+			<StyleLogo>
+				<a><img src="img/logo.png" alt=""></img></a>
+			</StyleLogo>
+			<StyleText>
+				<a>club map</a>
+			</StyleText>
 		</Fragment>
 	);
 }
